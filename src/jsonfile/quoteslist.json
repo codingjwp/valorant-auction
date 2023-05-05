@@ -1,0 +1,255 @@
+{
+  "metaData":[
+    {
+      "title": "Quote",
+      "longDesc": "Quotes translated into English and Korean with the person who said it",
+      "desc": "API for popular quotes",
+      "featured": true,
+      "categories": ["quotes", "person", "list"]
+    }
+  ],
+  "english":[
+    {
+      "quote": "It does not take courage to kill. It takes courage to live.",
+      "person": "Renee Ahdieh",
+      "personLink": "https://en.wikipedia.org/wiki/Ren%C3%A9e_Ahdieh",
+      "id": 1
+    },
+    {
+      "quote": "He who jumps into the void owes no explanation to those who stand and watch.",
+      "person": "Jean-Luc Godard",
+      "personLink": "https://en.wikipedia.org/wiki/Jean-Luc_Godard",
+      "id": 2
+    },
+    {
+      "quote": "If you have the courage to begin, you have the courage to succeed.",
+      "person": " David Viscott",
+      "personLink": "https://en.wikipedia.org/wiki/David_Viscott",
+      "id": 3
+    },
+    {
+      "quote": "You can choose courage, or you can choose comfort, but you cannot choose both.",
+      "person": "Brene Brown",
+      "personLink": "https://en.wikipedia.org/wiki/Bren%C3%A9_Brown",
+      "id": 4
+    },
+    {
+      "quote": "Courage doesn't mean you don't get afraid.\nCourage menans you don't let fear stop you.",
+      "person": "Bethany Hamilton",
+      "personLink": "https://en.wikipedia.org/wiki/Bethany_Hamilton",
+      "id": 5
+    },
+    {
+      "quote": "Courage consists not in hazarding without fear;\nbut being resolutely minded in a just cause.",
+      "person": "Plutarch",
+      "personLink": "https://en.wikipedia.org/wiki/Plutarch",
+      "id": 6
+    },
+    {
+      "quote": "Here is the world. Beautiful and terrible things will happen.\nDon't be afraid.",
+      "person": "Frederick Buechner",
+      "personLink": "https://en.wikipedia.org/wiki/Frederick_Buechner",
+      "id": 7
+    },
+    {
+      "quote": "With courage you will dare to take risks, have the strength to be compassionate, and the wisdom to be humble.\nCourage is the foundation of integrity.",
+      "person": "Mark Twain",
+      "personLink": "https://en.wikipedia.org/wiki/Mark_Twain",
+      "id": 8
+    },
+    {
+      "quote": "Courage is the secret sauce\nthat allows you to act despite your fears.",
+      "person": "Narayan Kamath",
+      "personLink": "https://betterhumans.pub/why-courage-is-more-important-than-confidence-f97865efc930",
+      "id": 9
+    },
+    {
+      "quote": "Bravery is being the only one who knows you're afraid.",
+      "person": "Franklin P. Jones",
+      "personLink": "#",
+      "id": 10
+    },
+    {
+      "quote": "A hero is no braver than an ordinary man,\nbut he is brave five minutes longer.",
+      "person": "Ralph Waldo Emerson",
+      "personLink": "https://en.wikipedia.org/wiki/Ralph_Waldo_Emerson",
+      "id": 11
+    },
+    {
+      "quote": "Courage is the commitment to begin without any guarantee of success.",
+      "person": "Johann Wolfang von Goethe",
+      "personLink": "https://en.wikipedia.org/wiki/Johann_Wolfgang_von_Goethe",
+      "id": 12
+    },
+    {
+      "quote": "Fortune always favors the brave, and never helps a man\nwho does not help himself.",
+      "person": "P.T. Barnum",
+      "personLink": "https://en.wikipedia.org/wiki/P._T._Barnum",
+      "id": 13
+    },
+    {
+      "quote": "I have not ceased being fearful,\nbut I have ceased to let fear control me.",
+      "person": "Erica Jong",
+      "personLink": "https://en.wikipedia.org/wiki/Erica_Jong",
+      "id": 14
+    },
+    {
+      "quote": "I love the man that can amile in trouble, that can gather\nstrength from distress, and grow brave by reflections",
+      "person": "Thomas Paine",
+      "personLink": "https://en.wikipedia.org/wiki/Thomas_Paine",
+      "id": 15
+    },
+    {
+      "quote": "The scariest moment is always just before you start.\nAfter that, things can only get better.",
+      "person": "Stephen King",
+      "personLink": "https://en.wikipedia.org/wiki/Stephen_King",
+      "id": 16
+    },
+    {
+      "quote": "Courage is the only virtue you can't fake.",
+      "person": "Nassim Nicholas Taleb",
+      "personLink": "https://en.wikipedia.org/wiki/Nassim_Nicholas_Taleb",
+      "id": 17
+    },
+    {
+      "quote": "Man cannot discover new oceans\nunless he has the courage to lose sight of the shore.",
+      "person": "Andre Gide",
+      "personLink": "https://en.wikipedia.org/wiki/Andr%C3%A9_Gide",
+      "id": 18
+    },
+    {
+      "quote": "What would life be if we had no courage to attempt anything?",
+      "person": "Vincent van Gogh",
+      "personLink": "https://en.wikipedia.org/wiki/Vincent_van_Gogh",
+      "id": 19
+    },
+    {
+      "quote": "Fear is a reaction. Courage is a decision.",
+      "person": "Winston Churchill",
+      "personLink": "https://en.wikipedia.org/wiki/Winston_Churchill",
+      "id": 20
+    }
+  ],
+  "korean":[
+    {
+      "quote": "죽이는 데는 용기가 필요하지 않다. 살기 위해서는 용기가 필요하다.",
+      "person": "르네 아디에",
+      "personLink": "https://en.wikipedia.org/wiki/Ren%C3%A9e_Ahdieh",
+      "id": 1
+    },
+    {
+      "quote": "공허에 뛰어드는 자는 서서 지켜보는 자에게는 설명할 의무가 없다.",
+      "person": "장 뤽 고다르",
+      "personLink": "https://en.wikipedia.org/wiki/Jean-Luc_Godard",
+      "id": 2
+    },
+    {
+      "quote": "시작할 용기가 있다면 성공할 용기도 있다.",
+      "person": "데이비드 비스콧",
+      "personLink": "https://en.wikipedia.org/wiki/David_Viscott",
+      "id": 3
+    },
+    {
+      "quote": "용기를 선택할 수도 있고 편안함을 선택할 수도 있지만 둘 다 선택할 수는 없다.",
+      "person": "브렌 브라운",
+      "personLink": "https://en.wikipedia.org/wiki/Bren%C3%A9_Brown",
+      "id": 4
+    },
+    {
+      "quote": "용기가 있다고 해서 두려워하지 않는 건 아니다.\n용기는 두려움이 당신을 멈추게 하지 않는 것을 의미한다.",
+      "person": "베서니 해밀턴",
+      "personLink": "https://ko.wikipedia.org/wiki/%EB%B2%A0%EC%84%9C%EB%8B%88_%ED%95%B4%EB%B0%80%ED%84%B4",
+      "id": 5
+    },
+    {
+      "quote": "용기는 두려움없이 위험을 무릅쓰는 것이 아니라\n정의로운 대의를 위해 단호하게 행동하는 데 있다.",
+      "person": "플루타르코스",
+      "personLink": "https://ko.wikipedia.org/wiki/%ED%94%8C%EB%A3%A8%ED%83%80%EB%A5%B4%EC%BD%94%EC%8A%A4",
+      "id": 6
+    },
+    {
+      "quote": "여기 세상은 아름답고 끔찍한 일들이 일어날 것이다.\n두려워하지 마라.",
+      "person": "프레데릭 버크너",
+      "personLink": "https://en.wikipedia.org/wiki/Frederick_Buechner",
+      "id": 7
+    },
+    {
+      "quote": "용기를 가지면 위험을 무릅쓰고, 동정심을 가질 수 있는 힘을 가지며, 겸손해질 수 있는 지혜를 가질것이다.\n용기는 청렴의 기반이다.",
+      "person": "마크 트웨인",
+      "personLink": "https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC_%ED%8A%B8%EC%9B%A8%EC%9D%B8",
+      "id": 8
+    },
+    {
+      "quote": "용기는 두려움에도 불구하고 행동할 수 있게 해주는 비밀 소스이다.",
+      "person": "나라얀 카맛",
+      "personLink": "https://betterhumans.pub/why-courage-is-more-important-than-confidence-f97865efc930",
+      "id": 9
+    },
+    {
+      "quote": "용기란 당신이 두려워하는 것을 아는 유일한 것이다.",
+      "person": "프랭클린 P. 존스",
+      "personLink": "#",
+      "id": 10
+    },
+    {
+      "quote": "영웅은 보통 사람보다 더 용감한 게 아니라 5분 더 용감한 것이다.",
+      "person": "랠프 월도 에머슨",
+      "personLink": "https://ko.wikipedia.org/wiki/%EB%9E%A0%ED%94%84_%EC%9B%94%EB%8F%84_%EC%97%90%EB%A8%B8%EC%8A%A8",
+      "id": 11
+    },
+    {
+      "quote": "용기는 성공을 보장하지 않고 시작하겠다는 약속이다.",
+      "person": "요한 볼프강 폰 괴테",
+      "personLink": "https://ko.wikipedia.org/wiki/%EC%9A%94%ED%95%9C_%EB%B3%BC%ED%94%84%EA%B0%95_%ED%8F%B0_%EA%B4%B4%ED%85%8C",
+      "id": 12
+    },
+    {
+      "quote": "행운은 항상 용감한 자를 편들고,\n자신을 돕지 않는 사람은 절대 돕지 않는다.",
+      "person": "P.T. 바넘",
+      "personLink": "https://ko.wikipedia.org/wiki/P._T._%EB%B0%94%EB%84%98",
+      "id": 13
+    },
+    {
+      "quote": "나는 두려움을 멈추지 못했지만\n두려움이 나를 통제하도록 내버려 두지 않았다.",
+      "person": "에리카 종",
+      "personLink": "https://ko.wikipedia.org/wiki/%EC%97%90%EB%A6%AC%EC%B9%B4_%EC%A2%85",
+      "id": 14
+    },
+    {
+      "quote": "나는 곤경에 처했을 때 미소를 지을 수 있고, 괴로움에서 힘을\n모을 수 있으며, 반선을 통해 용감해질 수 있는 사람을 사랑한다.",
+      "person": "토마스 페인",
+      "personLink": "https://ko.wikipedia.org/wiki/%ED%86%A0%EB%A8%B8%EC%8A%A4_%ED%8E%98%EC%9D%B8",
+      "id": 15
+    },
+    {
+      "quote": "가장 무서운 순간을 항상 시작하기 직전이다.\n그 후에는 상황이 나아질 수밖에 없다.",
+      "person": "스티븐 킹",
+      "personLink": "https://ko.wikipedia.org/wiki/%EC%8A%A4%ED%8B%B0%EB%B8%90_%ED%82%B9",
+      "id": 16
+    },
+    {
+      "quote": "용기는 거짓으로 속일 수 없는 유일한 미덕이다.",
+      "person": "나심 니콜라스 탈레브",
+      "personLink": "https://ko.wikipedia.org/wiki/%EB%82%98%EC%8B%AC_%EB%8B%88%EC%BB%AC%EB%9F%AC%EC%8A%A4_%ED%83%88%EB%A0%88%EB%B8%8C",
+      "id": 17
+    },
+    {
+      "quote": "인간은 해안을 볼 유기가 없으면 새로운 바다를 발견할 수 없다.",
+      "person": "앙드레 지드",
+      "personLink": "https://ko.wikipedia.org/wiki/%EC%95%99%EB%93%9C%EB%A0%88_%EC%A7%80%EB%93%9C",
+      "id": 18
+    },
+    {
+      "quote": "우리가 어떤 것도 시도할 용기가 없다면 삶은 어떻게 될까?",
+      "person": "빈센트 반 고흐",
+      "personLink": "https://en.wikipedia.org/wiki/Vincent_van_Gogh",
+      "id": 19
+    },
+    {
+      "quote": "두려움은 반응이고 요기는 결정이다.",
+      "person": "원스턴 처칠",
+      "personLink": "https://en.wikipedia.org/wiki/Winston_Churchill",
+      "id": 20
+    }
+  ]
+}
