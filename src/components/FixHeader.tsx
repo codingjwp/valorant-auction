@@ -20,7 +20,7 @@ const Header = styled.header`
   top: 0;
   width: 100%;
   height: 60px;
-  background-color: #8D94C7;
+  background: linear-gradient( 135deg, #F55555 20%, #FCCF31 80%);
 `
 const Nav = styled.nav<HeaderStyle>`
   display: flex;
@@ -47,6 +47,7 @@ const NavLi = styled.li<HeaderStyle>`
     height: 60%;
     border-radius: 10px;
     background-color: red;
+    cursor: pointer;
   }
 `
 

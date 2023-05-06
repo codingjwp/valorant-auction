@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useJsonData } from "../hooks/useJsonData";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
+import {ReactComponent as Replay} from '../assets/svgs/replay.svg'
 
 const QuoteMain = styled.main`
   width: 100%;
@@ -21,25 +22,50 @@ const QuoteMainSection = styled.section`
   justify-content: center;
   max-width: calc(50% - 30px);
   padding: 20px 30px;
+  min-width: 500px;
   height: 300px;
-  background-color: green;
+  background: linear-gradient( 135deg, #FCCF31 10%, #F55555 100%);
+  border-radius: 20px;
   & > h2 {
+    font-family: 'ABeeZee', sans-serif;
     margin-bottom: 30px;
     font-size: 1.8rem;
+    color: #fafafa;
   }
   & > span > a {
-    color: white;
+    color: #fafafa;
+    font-size: 1.15rem;
+    font-style: italic;
+    cursor: pointer;
   }
 `;
 
-const QuoteMainButton = styled.button.attrs(({
-  type: 'button',
-}))`
+const rotate = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`;
+
+const QuoteMainButtonContainer = styled.div`
   position: absolute;
+  width: 36px;
+  height: 36px;
   bottom: 10px;
   right: 10px;
-  width: 50px;
-  height: 30px;
+  border-radius: 50% 50%;
+  box-shadow: 2px 1.5px 1.5px rgba(0, 0, 0, 0.2);
+  &:hover {
+    scale:  calc(1.2);
+  }
+`
+
+const QuoteMainButton = styled(Replay)`
+  width: 35px;
+  height: 35px;
+  fill: #fafafa;
+  &:hover {
+    cursor: pointer;
+    animation: ${rotate} 2s linear infinite;
+  }
 `;
 
 const QuoteView = ({changeLang}: {changeLang: string}) => {
@@ -57,9 +83,11 @@ const QuoteView = ({changeLang}: {changeLang: string}) => {
         {jsonData && <h2>{jsonData[randomIndex].quote}</h2>}
         {jsonData &&
           <span>
-            <Link to={jsonData[randomIndex].personLink} target="_blank">{jsonData[randomIndex].person}</Link>
+            <Link to={jsonData[randomIndex].personLink} title={jsonData[randomIndex].person} target="_blank">{`- ${jsonData[randomIndex].person} -`}</Link>
           </span>}
-          <QuoteMainButton onClick={handleChangeIndexClick}>Change</QuoteMainButton>
+          <QuoteMainButtonContainer>
+            <QuoteMainButton onClick={handleChangeIndexClick} />
+          </QuoteMainButtonContainer>
       </QuoteMainSection>
     </QuoteMain>
   )
