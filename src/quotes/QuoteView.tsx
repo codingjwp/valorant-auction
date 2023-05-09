@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useJsonData } from "../hooks/useJsonData";
-import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
+import { useJsonData } from "../hooks/useJsonData";
 import {ReactComponent as Replay} from '../assets/svgs/replay.svg'
 
 const QuoteMain = styled.main`

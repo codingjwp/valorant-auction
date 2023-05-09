@@ -11,7 +11,6 @@ const QuoteMain = () => {
   const [changeLang, setChangeLang] = useState('english');
   const handleItemClick = (payload: string) => {
     setChangeLang(payload);
-    console.log(payload);
   }
 
   return (

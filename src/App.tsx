@@ -1,6 +1,8 @@
+import { Suspense } from 'react'
 import { RouterProvider } from 'react-router-dom'
 import { routerPaths } from './routers'
 import { createGlobalStyle } from 'styled-components'
+import Loading from './Loading'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -22,9 +24,9 @@ function App() {
   return (
     <>
     <GlobalStyle />
-      <div>
-        <RouterProvider router={routerPaths} />
-      </div>
+    <Suspense fallback={<Loading />}>
+      <RouterProvider router={routerPaths} />
+    </Suspense>
     </>
   )
 }
