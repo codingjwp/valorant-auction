@@ -5,8 +5,6 @@
 
 ### 실행 방법
 ```code
-
-npm intall
-npm start
-
+yarn
+yarn dev
 ```
