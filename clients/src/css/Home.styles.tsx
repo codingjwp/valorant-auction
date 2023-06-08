@@ -13,7 +13,7 @@ interface LayoutCenterProps {
   overflow?: string;
   cursor?: string;
 }
-// #323232
+
 const bgColorLeft = keyframes`
   0% { background-position: 100% 50%; background-color: #522E2E}
   100% { background-position: 0% 50%; background-color: #323232 }

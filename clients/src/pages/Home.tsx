@@ -1,10 +1,12 @@
-import { redirect } from 'react-router-dom';
-import { LayoutCenter, AnimationBulleHoleOne, AnimationBulleHoleTwo, AnimationBulleHoleThree, AnimationTitle, AnimationSubHead } from '../css/LayoutStyle';
+import { useState } from 'react';
+import { LayoutCenter, AnimationBulleHoleOne, AnimationBulleHoleTwo, AnimationBulleHoleThree, AnimationTitle, AnimationSubHead } from '../css/Home.styles';
+import RoomModal from './RoomModal';
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleMoveClick = () => {
-    redirect('');
+    setIsOpen(!isOpen);
   }
 
   return (
@@ -19,6 +21,7 @@ export default function Home() {
         <AnimationBulleHoleThree scale={1.9} top='6.5rem' right='11rem' zindex={0} delay='3s' />
         <AnimationBulleHoleTwo scale={1.1} top='8rem' right='1rem' zindex={1} delay='3.6s' />
       </LayoutCenter>
+      <RoomModal isOpen={isOpen} setIsOpen={setIsOpen} />
     </LayoutCenter>
   )
 }
