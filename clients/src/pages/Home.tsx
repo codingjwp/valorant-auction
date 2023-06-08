@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { LayoutCenter, AnimationBulleHoleOne, AnimationBulleHoleTwo, AnimationBulleHoleThree, AnimationTitle, AnimationSubHead } from '../css/Home.styles';
-import RoomModal from './RoomModal';
+import RoomModal from '../components/Modals/RoomModal';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
