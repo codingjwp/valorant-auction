@@ -16,8 +16,8 @@ export default function InputField(props: InputFieldProps) {
           name={props.name}
           required={props.required}
           placeholder=''
-          maxlength={props.maxlength}
-          minlength={props.minlength}
+          maxLength={props.maxLength}
+          minLength={props.minLength}
           pattern={props.pattern}
           value={props.value}
           form={props.form}

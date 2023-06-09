@@ -17,10 +17,11 @@ export default function Routers() {
         },
         {
           path: "rooms",
+          element: <Room />,
           children: [
             {
               index: true,
-              element: <Room />
+              element: <div>rooms </div>
             },
             {
               path: ":id",

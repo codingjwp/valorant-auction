@@ -8,8 +8,8 @@ interface InputAttrsProps {
   name?: string;
   required?: boolean;
   placeholder?: string;
-  maxlength?: number;
-  minlength?: number;
+  maxLength?: number;
+  minLength?: number;
   pattern?: string;
   value?: string;
   form?: string;
@@ -19,49 +19,65 @@ interface InputAttrsProps {
 export interface InputBaseProps extends InputAttrsProps {
   size?: "sm" | "md" | "lr" | "half" | "full";
   decor?: "dark" | "white" | "red" | "blue" | "green" | "gray" | "yellow";
-}
+};
 
+const inputColor = {
+  "dark": "#323232",
+  "white": "#f5f5f5",
+  "red": "#D41E1E",
+  "blue": "#008CBA",
+  "green": "#4CAF50",
+  "gray": "#6b6e70",
+  "yellow": "#ffbd03",
+};
 const inputSize = {
   "sm" : css`
     font-size: 1rem;
-    margin: 5px 0 5px;
-    width: 100px;
-    height: 40px;
+    padding: 5px;
+    width: 6.5rem;
+    height: 30px;
   `,
   "md" : css`
     font-size: 1.1rem;
-    margin: 5px 0 5px;
-    width: 200px;
-    height: 45px;
+    width: 13rem;
+    padding: 5px;
+    height: 35px;
   `,
   "lr" : css`
     font-size: 1.15rem;
-    margin: 5px 0 5px;
-    width: 300px;
-    height: 50px;
+    padding: 5px;
+    width: 18rem;
+    height: 40px;
   `,
   "half" : css`
-    margin: 5px 0 5px;
     font-size: 1.15rem;
-    width: calc(50% - 10px);
-    height: 50px;
+    width: 50%;
+    padding: 5px;
+    height: 40px;
   `,
   "full" : css`
-    margin: 10px 0 5px;
     font-size: 1.15rem;
-    width: calc(100% - 10px);
-    height: 50px;
+    width: 100%;
+    padding: 5px;
+    height: 40px;
   `,
-}
-
-const inputColor = {
-"dark": "#323232",
-"white": "#f5f5f5",
-"red": "#D41E1E",
-"blue": "#008CBA",
-"green": "#4CAF50",
-"gray": "#6b6e70",
-"yellow": "#ffbd03",
+};
+const focusSize = {
+  "sm": css`
+    transform: scale(0.7) translateY(-40px) translateX(-27px);
+  `,
+  "md": css`
+    transform: scale(0.7) translateY(-42px) translateX(-20px);
+  `,
+  "lr": css`
+    transform: scale(0.7) translateY(-46px) translateX(-27px);
+  `,
+  "half": css`
+    transform: scale(0.7) translateY(-46px) translateX(-20px);
+  `,
+  "full": css`
+    transform: scale(0.7) translateY(-46px) translateX(-27px);
+  `,
 }
 
 export const InputBase = styled.input.attrs<InputAttrsProps>(props => (
@@ -72,8 +88,8 @@ export const InputBase = styled.input.attrs<InputAttrsProps>(props => (
     required: props.required || true,
     name: props.name,
     placeholder: props.placeholder || ' ',
-    maxlength: props.maxlength,
-    minlength: props.minlength,
+    maxLength: props.maxLength,
+    minLength: props.minLength,
     pattern: props.pattern,
     value: props.value,
     form: props.form,
@@ -81,23 +97,20 @@ export const InputBase = styled.input.attrs<InputAttrsProps>(props => (
   }
   ))<InputBaseProps>`
   outline: none;
-  border-radius: 5px;
-  ${props => props.size && inputSize[props.size]};
-
-  &:focus, &:valid {
-    border: 3px solid ${props => props.decor  && inputColor[props.decor || "red"]};  
-  }
-  &:not(:placeholder-shown) ~ label,
-  &:focus ~ label,
-  &:valid ~ label {
-  opacity: 1;
-  color: ${props => props.decor  && inputColor[props.decor || "red"]};
-  transform: translateX(10px) translateY(-5px);
-  font-size: 1.2rem;
-  padding: 0 10px;
+  border: 0;
+  border-bottom: .02rem solid white;
   background-color: #323232;
-  border-radius: 5px;
-  letter-spacing: 0.2rem;
+  color: white;
+  ${props => props.size && inputSize[props.size || "sm"]};
+  margin: 10px 0;
+  transition: 0.5s ease-in;
+  &:focus, &:valid {
+    border-bottom: .02rem solid ${props => props.decor && inputColor[props.decor || "red"]};
+  };
+  &:focus + label, &:valid + label {
+    transition: 0.5s ease-in;
+    ${props => props.size && focusSize[props.size || "sm"]};
+    color: ${props => props.decor && inputColor[props.decor || "red"]};
   }
 `;
 
@@ -107,18 +120,15 @@ export const InputBox = styled.div`
 
 interface LabelBase {
   htmlFor?: string;
-}
+};
 
 export const LabelBase = styled.label.attrs<LabelBase>(props => ({
   htmlFor: props.htmlFor,
 }))`
   position: absolute;
-  top: 0;
-  left: 0;
-  margin: 5px 0 0 5px;
-  padding: 20px 10px 10px 10px;
-  pointer-events: none;
-  opacity: 0.25;
-  text-transform: uppercase;
-  transition: 0.5s;
+  top: 50%;
+  transform: translateY(-10px);
+  left: 0.5rem;
+  color: #ffffff66;
+  transition: 0.5s ease-in;
 `;
