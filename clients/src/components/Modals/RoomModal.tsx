@@ -5,6 +5,7 @@ import Modal from "./Modal";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as CloseSvg } from '../../assets/svgs/close.svg'
 import { ReactComponent as ToolTipSvg } from '../../assets/svgs/tooltip.svg'
+import ToolTips from "../ToolTips/ToolTips";
 
 
 interface EssentialModalProps {
@@ -45,15 +46,25 @@ const RoomFrom = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetStateAction<b
 }
 
 const RoomHeader = ({title, setIsOpen}: {title?: string, setIsOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
+  const [toolOpen, setToolOpen] = useState(false);
   const handleCloseClick = () => {
     setIsOpen(false);
+  }
+  const handleToolTipOpenClick = () => {
+    setToolOpen(!toolOpen);
   }
 
   return (
     <>
       {title}
       <div>
-        <ToolTipSvg />
+        <ToolTips
+          toolOpen={toolOpen}
+          setToolOpen={setToolOpen}
+          titleContent="1. Room Number은 대소문자와 숫자만 가능 합니다.
+          2. Room Password는 8자리 이상 입력하셔야 합니다.">
+          <ToolTipSvg onClick={handleToolTipOpenClick} />
+        </ToolTips>
         <CloseSvg onClick={handleCloseClick} />
       </div>
     </>
