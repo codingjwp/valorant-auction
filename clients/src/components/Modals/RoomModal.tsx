@@ -1,26 +1,32 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import Button from "../Buttons/Button";
 import InputField from "../InputFields/InputField";
-import Modal, { EssentialModalProps } from "./Modal";
+import Modal from "./Modal";
 import { useNavigate } from "react-router-dom";
+import { ReactComponent as CloseSvg } from '../../assets/svgs/close.svg'
+import { ReactComponent as ToolTipSvg } from '../../assets/svgs/tooltip.svg'
 
 
+interface EssentialModalProps {
+  isOpen: boolean,
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
+}
 
-export default function RoomModal({isOpen, setIsOpen}: EssentialModalProps) {
-  const navigate = useNavigate();
+
+const RoomFrom = ({setIsOpen}: {setIsOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
   const [roomValue, setRoomValue] = useState("");
   const [pwValue, setPwValue] = useState("");
-
+  const navigate = useNavigate();
 
   const handleFormSumbit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsOpen(!isOpen);
-    navigate(`rooms/${roomValue}`);
+    setIsOpen(false);
+    navigate(`rooms?number=${roomValue}`);
   } 
 
   const handleRoomChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setRoomValue(e.target.value);
+    setRoomValue(e.target.value.replace(/[^a-zA-Z0-9]/g, ''));
   }
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,13 +35,37 @@ export default function RoomModal({isOpen, setIsOpen}: EssentialModalProps) {
   }
 
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="CREATE ROOMS" size="md" >
-      <form onSubmit={handleFormSumbit}>
-        <InputField id="room-numbers" name="roomnumber" type="text" size="full" decor="red" placeholder="Room Number" value={roomValue} onChange={handleRoomChange} />
-        <InputField id="room-password" name="roompw" type="password" size="full" decor="red" placeholder="Room Pw" minLength={8} value={pwValue} onChange={handlePasswordChange} />
-        <Button type="submit" name="createRooms" size="half" decor="variant-red" color="white">방생성</Button>
-        <Button type="submit" name="createRooms" size="half" decor="variant-red" color="white">방참가</Button>
-      </form>
+    <form onSubmit={handleFormSumbit}>
+      <InputField id="room-numbers" name="roomnumber" type="text" size="full" decor="red" placeholder="Room Number" value={roomValue} onChange={handleRoomChange} />
+      <InputField id="room-password" name="roompw" type="password" size="full" decor="red" placeholder="Room Pw" minLength={8} value={pwValue} onChange={handlePasswordChange} />
+      <Button type="submit" name="createRooms" size="half" decor="variant-red" color="white">방생성</Button>
+      <Button type="submit" name="createRooms" size="half" decor="variant-red" color="white">방참가</Button>
+    </form>
+  )
+}
+
+const RoomHeader = ({title, setIsOpen}: {title?: string, setIsOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
+  const handleCloseClick = () => {
+    setIsOpen(false);
+  }
+
+  return (
+    <>
+      {title}
+      <div>
+        <ToolTipSvg />
+        <CloseSvg onClick={handleCloseClick} />
+      </div>
+    </>
+  )
+}
+
+export default function RoomModal({isOpen, setIsOpen}: EssentialModalProps) {
+
+  return (
+    <Modal isOpen={isOpen} size="md" >
+      <RoomHeader title="CREATE ROOMS" setIsOpen={setIsOpen} />
+      <RoomFrom setIsOpen={setIsOpen} />
     </Modal>
   );
 }

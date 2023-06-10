@@ -38,7 +38,7 @@ export const ModalHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   height: 48px;
-  & > svg {
+  & > div > svg {
     width: 40px;
     height: 40px;
   }

@@ -17,17 +17,7 @@ export default function Routers() {
         },
         {
           path: "rooms",
-          element: <Room />,
-          children: [
-            {
-              index: true,
-              element: <div>rooms </div>
-            },
-            {
-              path: ":id",
-              element: <div>Room id</div>
-            }
-          ]
+          element: <Room />
         }
       ]
     }
