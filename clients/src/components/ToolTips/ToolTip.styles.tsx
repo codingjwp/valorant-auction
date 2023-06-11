@@ -34,6 +34,10 @@ const bgColor = {
 interface ToolTipStyleProps {
   decor?: 'dark' | 'white' | 'red' | 'yellow' | 'blue' | 'green' | 'gray';
   open: boolean;
+  moveposition: {
+    x: string,
+    y: string,
+  };
 }
 
 export const ToolTipBase = styled.div`
@@ -47,7 +51,7 @@ export const ToolTipContent = styled.pre<ToolTipStyleProps>`
   padding: 5px;
   top: 0;
   left: 0;
-  transform: translateY(-90px) translateX(-134px);
+  transform: ${props => props.moveposition && `translateX(${props.moveposition.x}) translateY(${props.moveposition.y})` };
   font-size: .9rem;
   white-space: pre-line;
   line-height: 1.1rem;

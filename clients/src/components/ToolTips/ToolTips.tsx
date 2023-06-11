@@ -6,9 +6,13 @@ interface ToolTipProps {
   setToolOpen: React.Dispatch<React.SetStateAction<boolean>>;
   titleContent?: string;
   children?: React.ReactNode;
+  moveposition: {
+    x: string,
+    y: string,
+  };
 }
 
-export default function ToolTips({toolOpen, setToolOpen, titleContent, children}: ToolTipProps) {
+export default function ToolTips({toolOpen, setToolOpen, titleContent, moveposition, children}: ToolTipProps) {
   const preRef = useRef<HTMLPreElement>(null);
 
   const handleClickClose = (e: MouseEvent<HTMLPreElement>) => {
@@ -20,7 +24,12 @@ export default function ToolTips({toolOpen, setToolOpen, titleContent, children}
   return (
     <ToolTipBase>
       {children}
-      <ToolTipContent ref={preRef} onClick={handleClickClose} decor="red" open={toolOpen}>
+      <ToolTipContent 
+        moveposition={moveposition}
+        ref={preRef}
+        onClick={handleClickClose}
+        decor="red"
+        open={toolOpen}>
         {titleContent}
       </ToolTipContent>
     </ToolTipBase>

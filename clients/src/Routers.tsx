@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Layout from './pages/Layout'
 import Home from './pages/Home'
-import Room from './pages/Room'
+import AuctionRoom from './pages/AuctionRoom'
+import AuctionSetting from './pages/AuctionSetting'
 
 
 export default function Routers() {
@@ -16,8 +17,12 @@ export default function Routers() {
           element: <Home />  
         },
         {
-          path: "rooms",
-          element: <Room />
+          path: "member",
+          element: <AuctionSetting />
+        },
+        {
+          path: "auction",
+          element: <AuctionRoom />
         }
       ]
     }

@@ -1,4 +1,4 @@
-import { ReactNode, MouseEvent} from "react";
+import { ReactNode, MouseEvent, forwardRef } from "react";
 import { ButtonBase, ButtonStyleProps } from "./Button.styles";
 
 interface ButtonProps extends ButtonStyleProps {
@@ -6,9 +6,10 @@ interface ButtonProps extends ButtonStyleProps {
   children?: ReactNode;
 }
 
-export default function Button(props: ButtonProps) {
+ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   return (
     <ButtonBase
+      ref={ref}
       type={props.type}
       name={props.name}
       disabled={props.disabled}
@@ -21,4 +22,6 @@ export default function Button(props: ButtonProps) {
         {props.children}
     </ButtonBase>
   ) 
-}
+});
+
+export default Button;
