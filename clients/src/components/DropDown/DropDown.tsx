@@ -13,7 +13,7 @@ interface DropDownProps{
   menus: MenuProps[];
 }
 
-export default function DropDown({isOpen, menus, children}: DropDownProps) {
+const DropDown = ({isOpen, menus, children}: DropDownProps) => {
   return (
     <DropDownBase>
       {children}
@@ -25,3 +25,4 @@ export default function DropDown({isOpen, menus, children}: DropDownProps) {
     </DropDownBase>
   )
 };
+export default DropDown

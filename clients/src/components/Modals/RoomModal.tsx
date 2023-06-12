@@ -88,7 +88,7 @@ const RoomHeader = ({title, setIsOpen}: {title?: string, setIsOpen: React.Dispat
   )
 }
 
-export default function RoomModal({isOpen, setIsOpen}: EssentialModalProps) {
+const RoomModal = ({isOpen, setIsOpen}: EssentialModalProps) => {
 
   return (
     <Modal isOpen={isOpen} size="md" >
@@ -97,3 +97,4 @@ export default function RoomModal({isOpen, setIsOpen}: EssentialModalProps) {
     </Modal>
   );
 }
+export default RoomModal;

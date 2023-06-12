@@ -7,9 +7,7 @@ import { changeStream } from "../../custom/MediaList";
 
 
 const MediaHeader = ({title, setIsModalOpen}: {title?: string, setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
-  const handleCloseClick = () => {
-    setIsModalOpen(false);
-  }
+  const handleCloseClick = () => { setIsModalOpen(false);}
 
   return (
     <>
@@ -78,7 +76,7 @@ interface MediaModal {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function MediaModal({isModalOpen, setIsModalOpen}: MediaModal) {
+const MediaModal = ({isModalOpen, setIsModalOpen}: MediaModal) => {
   return (
     <Modal isOpen={isModalOpen} size="md">
       <MediaHeader title="Media Setting" setIsModalOpen={setIsModalOpen} />
@@ -86,3 +84,5 @@ export default function MediaModal({isModalOpen, setIsModalOpen}: MediaModal) {
     </Modal>
   )
 }
+
+export default MediaModal;

@@ -10,7 +10,7 @@ interface AvatarProps {
   shape?: "rounded" | "circle";
 }
 
-export default function Avatar(props: AvatarProps) {
+const Avatar = (props: AvatarProps) => {
   const handleImgSrcError = (event: SyntheticEvent<HTMLImageElement>) => {
     event.currentTarget.src = "/src/assets/svgs/baseavatar.svg";
   }
@@ -25,3 +25,5 @@ export default function Avatar(props: AvatarProps) {
     </AvatarBaseContainer>
   )
 }
+
+export default Avatar;

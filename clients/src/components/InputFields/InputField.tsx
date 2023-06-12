@@ -5,7 +5,7 @@ interface InputFieldProps extends InputBaseProps {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function InputField(props: InputFieldProps) {
+const InputField = (props: InputFieldProps) => {
   
   return (
       <InputBox>
@@ -30,3 +30,5 @@ export default function InputField(props: InputFieldProps) {
       </InputBox>
   )
 }
+
+export default InputField;

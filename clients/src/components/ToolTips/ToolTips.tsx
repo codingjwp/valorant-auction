@@ -12,7 +12,7 @@ interface ToolTipProps {
   };
 }
 
-export default function ToolTips({toolOpen, setToolOpen, titleContent, moveposition, children}: ToolTipProps) {
+const ToolTips = ({toolOpen, setToolOpen, titleContent, moveposition, children}: ToolTipProps) => {
   const preRef = useRef<HTMLPreElement>(null);
 
   const handleClickClose = (e: MouseEvent<HTMLPreElement>) => {
@@ -35,3 +35,5 @@ export default function ToolTips({toolOpen, setToolOpen, titleContent, moveposit
     </ToolTipBase>
   );
 }
+
+export default ToolTips;

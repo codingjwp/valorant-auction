@@ -7,7 +7,7 @@ interface ModalProps {
   children?: ReactNode;
 }
 
-export default function Modal({isOpen, size = "sm", children}: ModalProps) {
+const Modal = ({isOpen, size = "sm", children}: ModalProps) => {
   const arrayChildren = React.Children.toArray(children);
 
   return (
@@ -23,3 +23,5 @@ export default function Modal({isOpen, size = "sm", children}: ModalProps) {
     </ModalLayout>
   )
 }
+
+export default Modal;
