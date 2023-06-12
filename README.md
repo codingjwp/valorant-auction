@@ -18,13 +18,13 @@ yarn dev
 
 ## 할일 목록
 :white_large_square: Component 만들기 [(styled-components 사용)](https://styled-components.com/)   
- - :ballot_box_with_check: Button Components 만들기 [(Button.tsx, Button.styles.tsx)]("./clients/src/components/Buttons")   
- - :ballot_box_with_check: InputField Components 만들기 [(InputField.tsx, InputField.styles.tsx)]("./clients/src/components/InputFields")   
- - :ballot_box_with_check: Modal Components [(Modal.tsx, Modal.styles.tsx)]("./clients/src/components/Modals")   
- - :ballot_box_with_check: Select Components [(Select.tsx, Select.styles.tsx)]("./clients/src/components/Selects")   
- - :ballot_box_with_check: ToolTip Components [(ToolTip.tsx, ToolTip.styles.tsx)]("./clients/src/components/ToolTips")   
- - :ballot_box_with_check: DropDown Components [(DropDown.tsx, DropDown.styles.tsx)]("./clients/src/components/DropDowns")   
- - :ballot_box_with_check: Avatars Components [(Avatar.tsx, Avatar.styles.tsx)]("./clients/src/components/Avatars")   
+ - :ballot_box_with_check: Button Components 만들기 [(Button.tsx, Button.styles.tsx)]("clients/src/components/Buttons")   
+ - :ballot_box_with_check: InputField Components 만들기 [(InputField.tsx, InputField.styles.tsx)]("clients/src/components/InputFields")   
+ - :ballot_box_with_check: Modal Components [(Modal.tsx, Modal.styles.tsx)]("clients/src/components/Modals")   
+ - :ballot_box_with_check: Select Components [(Select.tsx, Select.styles.tsx)]("clients/src/components/Selects")   
+ - :ballot_box_with_check: ToolTip Components [(ToolTip.tsx, ToolTip.styles.tsx)]("clients/src/components/ToolTips")   
+ - :ballot_box_with_check: DropDown Components [(DropDown.tsx, DropDown.styles.tsx)]("clients/src/components/DropDowns")   
+ - :ballot_box_with_check: Avatars Components [(Avatar.tsx, Avatar.styles.tsx)]("clients/src/components/Avatars")   
 
 <br>
 
