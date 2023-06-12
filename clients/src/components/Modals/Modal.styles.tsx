@@ -34,7 +34,7 @@ export const ModalHeader = styled.header`
   display: flex;
   flex-direction: row;
   font-size: 1.3rem;
-  color: white;
+  color: #f5f5f5;
   align-items: center;
   justify-content: space-between;
   height: 48px;
@@ -42,9 +42,13 @@ export const ModalHeader = styled.header`
     display: flex;
     flex-direction: row;
   }
-  & > div svg {
+  & svg {
     width: 40px;
     height: 40px;
+    &:active {
+      transform: scale(0.9);
+      & path { fill: #f5f5f566;}
+    }
   }
 `
 

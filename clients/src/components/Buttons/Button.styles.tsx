@@ -128,7 +128,6 @@ export const ButtonBase = styled.button.attrs<ButtonAttrsProps>(props =>(
     disabled: props.disabled || false,
   }
 ))<ButtonStyleProps>`
-  font-size: 1.15rem;
   color: ${props=> props.color || "black"};
   ${props => props.decor && bgColors[props.decor]};
   ${props => props.size && btnSizes[props.size]};

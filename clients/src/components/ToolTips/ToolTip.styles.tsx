@@ -55,6 +55,7 @@ export const ToolTipContent = styled.pre<ToolTipStyleProps>`
   font-size: .9rem;
   white-space: pre-line;
   line-height: 1.1rem;
+  -webkit-user-select: none;
   user-select: none;
   display: ${props => props.open ? 'block' : 'none'};
   ${props => props.decor && bgColor[props.decor || 'dark']}
