@@ -9,9 +9,31 @@ yarn
 yarn dev
 ```
 
+### 사용한 라이브러리
+1. react + vite
+2. react-router-dom
+3. vite-plugin-svgr
+4. styled-components
+5. recoil(사용 예정)
+
 ## 할일 목록
-:white_large_square: Home.tsx UI 만들기   
- - :ballot_box_with_check: Title SVG 생성   
- - :ballot_box_with_check: Sub Head SVG 생성   
- - :ballot_box_with_check: Bulle holes SVG 생성   
- - :heavy_multiplication_x: Gun Sound SVG 생성(autoplay 정책으로 인한 문제로 보류중이나 안될 가능성 존재)   
+:white_large_square: Component 만들기 [(styled-components 사용)](https://styled-components.com/)   
+ - :ballot_box_with_check: Button Components 만들기 [(Button.tsx, Button.styles.tsx)]("./clients/src/components/Buttons")   
+ - :ballot_box_with_check: InputField Components 만들기 [(InputField.tsx, InputField.styles.tsx)]("./clients/src/components/InputFields")   
+ - :ballot_box_with_check: Modal Components [(Modal.tsx, Modal.styles.tsx)]("./clients/src/components/Modals")   
+ - :ballot_box_with_check: Select Components [(Select.tsx, Select.styles.tsx)]("./clients/src/components/Selects")   
+ - :ballot_box_with_check: ToolTip Components [(ToolTip.tsx, ToolTip.styles.tsx)]("./clients/src/components/ToolTips")   
+ - :ballot_box_with_check: DropDown Components [(DropDown.tsx, DropDown.styles.tsx)]("./clients/src/components/DropDowns")   
+ - :ballot_box_with_check: Avatars Components [(Avatar.tsx, Avatar.styles.tsx)]("./clients/src/components/Avatars")   
+
+<br>
+
+:white_large_square: Page 만들기
+- :ballot_box_with_check: Routers Page 만들기   
+- :ballot_box_with_check: Home Page 만들기   
+  1. :ballot_box_with_check: RoomModal 만들기   
+- :white_large_square: AuctionSetting Page 만들기   
+  1. :ballot_box_with_check: MediaModal 만들기 (오디오, 비디오 설정 추가)
+  2. :white_large_square: 감독 등록 모달 만들기
+  3. :white_large_square: 선수 등록 모달 만들기
+  4. :white_large_square: 등록된 내용 모두 초기화 만들기.

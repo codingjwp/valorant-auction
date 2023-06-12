@@ -16,6 +16,32 @@ import {
 import MediaModal from '../components/Modals/MediaModal';
 import Avatar from '../components/Avatars/Avatar';
 
+interface SettingRowsProps {
+  headerName: string,
+  members?: {
+    headContent?: string;
+    nameContent?: string;
+    src?: string;
+    alt?: string;
+  }[]
+}
+
+function AuctionSettingRows(props: SettingRowsProps) {
+  return (
+    <AuctionGridDiv>
+      <AuctionRowsHeader>{props.headerName}</AuctionRowsHeader>
+      <Avatar nameContent='감블러' size="md"  shape='rounded' alt='test1' />
+      <Avatar nameContent='버니버니' size="md" shape='rounded' alt='test2' />
+      <Avatar nameContent='김된모' shape='rounded' size="md" alt='test3' />
+      <Avatar nameContent='행돌' shape='rounded' size="md" alt='test4' />
+      {props.headerName === "감독" ? <AuctionSettingNull></AuctionSettingNull> : <Avatar nameContent='test' shape='rounded' size="md" alt='test5' />}
+    </AuctionGridDiv>
+  );
+}
+
+
+
+
 function AutcionHeader() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -58,28 +84,8 @@ function AutcionHeader() {
   );
 }
 
-interface SettingRowsProps {
-  headerName: string,
-  members?: {
-    headContent?: string;
-    nameContent?: string;
-    src?: string;
-    alt?: string;
-  }[]
-}
 
-function AuctionSettingRows(props: SettingRowsProps) {
-  return (
-    <AuctionGridDiv>
-      <AuctionRowsHeader>{props.headerName}</AuctionRowsHeader>
-      <Avatar nameContent='감블러' size="md"  shape='rounded' alt='test1' />
-      <Avatar nameContent='버니버니' size="md" shape='rounded' alt='test2' />
-      <Avatar nameContent='김된모' shape='rounded' size="md" alt='test3' />
-      <Avatar nameContent='행돌' shape='rounded' size="md" alt='test4' />
-      {props.headerName === "감독" ? <AuctionSettingNull></AuctionSettingNull> : <Avatar nameContent='test' shape='rounded' size="md" alt='test5' />}
-    </AuctionGridDiv>
-  );
-}
+
 
 export default function AutionSetting() {
 
