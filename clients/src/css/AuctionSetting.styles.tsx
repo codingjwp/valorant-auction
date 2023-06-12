@@ -31,13 +31,37 @@ export const AuctionSettingHeader = styled.header`
   justify-content: space-between;
 `
 
-export const AuctionSettingSection = styled.section<{position: string}>`
+export const AuctionSettingSection = styled.section<{position?: string}>`
   width: 100%;
-  border-bottom: 1px solid #D41E1E;
   ${props => props.position === 'middle' && css`
     display: flex;
     justify-content: space-around;
+    border-bottom: 1px solid #D41E1E;
   `}
+  ${props => props.position === 'bottom' && css`
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 5px;
+  `}
+`
+
+export const AuctionGridDiv = styled.div`
+  display: grid;
+  grid-template-rows: 50px 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 5px;
+  text-align: center;
+`
+
+export const AuctionRowsHeader = styled.div`
+  width: 100%;
+  color: #f5f5f5DD;
+  background-color: #D41E1E77;
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export const AuctionTitleSvg = styled(ValorantSvg)`
@@ -62,4 +86,8 @@ export const AuctionSettingSvg = styled(SettingSvg)`
       opacity: 0.8;
     }
   }
+`;
+
+export const AuctionSettingNull = styled.div`
+  background-color: #323232;
 `;
