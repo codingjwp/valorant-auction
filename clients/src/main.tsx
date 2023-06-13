@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { createGlobalStyle } from "styled-components";
+import { RecoilRoot } from 'recoil'
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -24,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     font: inherit;
     vertical-align: baseline;
   }
-  /* HTML5 display-role reset for older browsers */
+
   article, aside, details, figcaption, figure, 
   footer, header, hgroup, menu, nav, section {
     display: block;
@@ -53,6 +54,8 @@ const GlobalStyle = createGlobalStyle`
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <GlobalStyle />
-    <App />
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
   </React.StrictMode>,
 )

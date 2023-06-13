@@ -1,7 +1,7 @@
 
-export async function userStream() {
+// 사용가능한 audio, vedio 목록 가져오기.
+export async function userPermissionsStream() {
   try {
-    if (localStorage.getItem("audioList") && localStorage.getItem("videoList")) return ;
     await navigator.mediaDevices.getUserMedia({audio: true, video: true});
     const stream = await navigator.mediaDevices.enumerateDevices();
     const audioList = stream.filter((device) => device.kind === 'audioinput').map((device, index) => ({
@@ -14,10 +14,12 @@ export async function userStream() {
       value: device.deviceId,
       label: device.label
     }));
-    localStorage.setItem("audioList", JSON.stringify(audioList));
-    localStorage.setItem("videoList", JSON.stringify(videoList));
-  } catch(e: any) {
-    console.error(e);
+    return [audioList, videoList];
+  } catch(err: any) {
+    if (err.name === "NotAllowedError") {
+      console.error(err);
+    }
+    return [[],[]];
   }
 };
 

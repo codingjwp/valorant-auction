@@ -1,10 +1,8 @@
 import Routers from "./Routers"
 
 
-function App() {
-  return (
-    <Routers />
-  )
+const App = () => {
+  return <Routers />
 }
 
-export default App
+export default App;

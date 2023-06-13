@@ -4,6 +4,8 @@ import { ReactComponent as CloseSvg } from '../../assets/svgs/close.svg'
 import Button from "../Buttons/Button";
 import Select from "../Selects/Select";
 import { changeStream } from "../../custom/MediaList";
+import { useRecoilValue } from 'recoil';
+import { audioListState, videoListState } from '../../states/mediaState'
 
 
 const MediaHeader = ({title, setIsModalOpen}: {title?: string, setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
@@ -17,15 +19,9 @@ const MediaHeader = ({title, setIsModalOpen}: {title?: string, setIsModalOpen: R
   )
 }
 
-type OptionList = {
-  idx: string,
-  value: string,
-  label: string,
-}
-
 const MediaSection = ({setIsModalOpen}: {setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;}) => {
-  const audioList: OptionList[] = JSON.parse(localStorage.getItem("audioList") as string);
-  const vedioList: OptionList[] = JSON.parse(localStorage.getItem("videoList") as string);
+  const audioList = useRecoilValue(audioListState);
+  const vedioList  = useRecoilValue(videoListState);
   const audioRef = useRef<HTMLSelectElement>(null);
   const vedioRef = useRef<HTMLSelectElement>(null);
   const [audioID, setAudioID] = useState<string | null>(null);

@@ -1,13 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LayoutCenter, AnimationBulleHoleOne, AnimationBulleHoleTwo, AnimationBulleHoleThree, AnimationTitle, AnimationSubHead } from '../css/Home.styles';
 import RoomModal from '../components/Modals/RoomModal';
+import { useRecoilCallback, useRecoilValue } from 'recoil';
+import { permissionState, audioListState, videoListState} from '../states/mediaState'
+import { userPermissionsStream } from '../custom/MediaList';
 
-export default function Home() {
+
+const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const getMediaList = useRecoilCallback(({set}) => async () => {
+    const [audioList, videoList] = await userPermissionsStream();
+    if (!(audioList.length === 0 && videoList.length === 0)) {
+      set(audioListState, audioList);
+      set(videoListState, videoList);      
+      set(permissionState, true);
+    }    
+  });
+  const permission = useRecoilValue(permissionState);
 
   const handleMoveClick = () => {
-    setIsOpen(!isOpen);
+    if (permission) setIsOpen(!isOpen);
   }
+
+  useEffect(() => {
+    getMediaList();
+  }, [])
 
   return (
     <LayoutCenter direction="column" width='100vw' height='100vh' overflow='hidden'>
@@ -21,7 +38,9 @@ export default function Home() {
         <AnimationBulleHoleThree scale={1.9} top='6.5rem' right='11rem' zindex={0} delay='3s' />
         <AnimationBulleHoleTwo scale={1.1} top='8rem' right='1rem' zindex={1} delay='3.6s' />
       </LayoutCenter>
-      <RoomModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      { permission ? <RoomModal isOpen={isOpen} setIsOpen={setIsOpen} /> : null}
     </LayoutCenter>
   )
 }
+
+export default Home;

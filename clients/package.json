@@ -2,6 +2,7 @@
   "name": "valorant-auction",
   "private": true,
   "version": "0.0.0",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,9 +11,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/recoil": "^0.0.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
+    "recoil": "^0.7.7",
     "styled-components": "^6.0.0-rc.3",
     "vite-plugin-svgr": "^3.2.0"
   },

@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { userStream } from '../custom/MediaList';
 import Button from '../components/Buttons/Button';
-import DropDown from '../components/DropDown/DropDown';
+import DropDown from '../components/DropDowns/DropDown';
 import { 
   AuctionSettingCenter,
   AuctionSettingBase,
@@ -26,7 +25,7 @@ interface SettingRowsProps {
   }[]
 }
 
-function AuctionSettingRows(props: SettingRowsProps) {
+const AuctionSettingRows = (props: SettingRowsProps) => {
   return (
     <AuctionGridDiv>
       <AuctionRowsHeader>{props.headerName}</AuctionRowsHeader>
@@ -39,10 +38,7 @@ function AuctionSettingRows(props: SettingRowsProps) {
   );
 }
 
-
-
-
-function AutcionHeader() {
+const AutcionHeader = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,7 +65,7 @@ function AutcionHeader() {
     navigate('/');
   }
 
-  function handleSettingClick() {
+  const handleSettingClick = () => {
     setIsOpen(!isOpen);
   }
 
@@ -84,49 +80,72 @@ function AutcionHeader() {
   );
 }
 
+const AuctionMiddle = () => {
+  const [isAuctionOpen, setIsAuctionOpen] = useState(false);
+  const [nameTarget, setNameTarget] = useState("");
 
-
-
-export default function AutionSetting() {
-
-  useEffect(() => {
-    if (!localStorage.getItem("audioList") && !localStorage.getItem("videoList")) userStream();
-  }, []);
+  const handleClickEvent = (event: MouseEvent<HTMLButtonElement>) => {
+    const targets = event.currentTarget.name.split("-")[1];
+    if (targets === "direcor" || targets === "member") setIsAuctionOpen(!isAuctionOpen);
+    setNameTarget(targets);
+  }
 
   return (
-  <AuctionSettingCenter>
-    <AuctionSettingBase>
-      <AutcionHeader />
-      <AuctionSettingSection position='middle'>
-        <Button
-          type="reset"
-          size="lr"
-          name="auction-reset"
-          decor='variant-red'
-          color="#f5f5f5">
-          초기화
-        </Button>
-        <Button 
-          type="button"
-          size="lr"
-          name="auction-member"
-          decor="variant-red"
-          color="#f5f5f5">감독 등록</Button>
-        <Button 
-          type="button"
-          size="lr"
-          name="auction-member"
-          decor="variant-red"
-          color="#f5f5f5">멤버 등록</Button>
-      </AuctionSettingSection>
-      <AuctionSettingSection position='bottom'>
-        <AuctionSettingRows headerName='감독' />
-        <AuctionSettingRows headerName='A Group' />
-        <AuctionSettingRows headerName='B Group' />
-        <AuctionSettingRows headerName='C Group' />
-        <AuctionSettingRows headerName='D Group' />
-        <AuctionSettingRows headerName='E Group' />
-      </AuctionSettingSection>
-    </AuctionSettingBase>
-  </AuctionSettingCenter>);
+    <AuctionSettingSection position='middle'>
+      <Button 
+        type="button"
+        size="lr"
+        name="auction-director"
+        decor="variant-red"
+        color="#f5f5f5"
+        onClick={handleClickEvent}>감독 등록</Button>
+      <Button 
+        type="button"
+        size="lr"
+        name="auction-member"
+        decor="variant-red"
+        color="#f5f5f5"
+        onClick={handleClickEvent}>멤버 등록</Button>
+      <Button
+        type="reset"
+        size="lr"
+        name="auction-reset"
+        decor='variant-red'
+        color="#f5f5f5">초기화</Button>
+      <Button
+        type="reset"
+        size="lr"
+        name="auction-finish"
+        decor='variant-red'
+        color="#f5f5f5">완료</Button>
+    </AuctionSettingSection>
+  );
 }
+
+const AuctionBottom = () => {
+  return (
+    <AuctionSettingSection position='bottom'>
+      <AuctionSettingRows headerName='감독' />
+      <AuctionSettingRows headerName='A Group' />
+      <AuctionSettingRows headerName='B Group' />
+      <AuctionSettingRows headerName='C Group' />
+      <AuctionSettingRows headerName='D Group' />
+      <AuctionSettingRows headerName='E Group' />
+    </AuctionSettingSection>
+  )
+}
+
+const AutionSetting = () => {
+
+  return (
+    <AuctionSettingCenter>
+      <AuctionSettingBase>
+        <AutcionHeader />
+        <AuctionMiddle />
+        <AuctionBottom />
+      </AuctionSettingBase>
+    </AuctionSettingCenter>
+  );
+};
+
+export default AutionSetting;

@@ -5,7 +5,7 @@ import AuctionRoom from './pages/AuctionRoom'
 import AuctionSetting from './pages/AuctionSetting'
 
 
-export default function Routers() {
+const Routers = () => {
   const routerElements = createBrowserRouter([
     {
       path: "/",
@@ -30,3 +30,5 @@ export default function Routers() {
 
  return <RouterProvider router={routerElements} />
 }
+
+export default Routers;
