@@ -13,6 +13,7 @@ const InputField = (props: InputFieldProps) => {
           id={props.id}
           type={props.type}
           alt={props.alt}
+          title={props.title}
           name={props.name}
           required={props.required}
           placeholder=''
@@ -24,6 +25,9 @@ const InputField = (props: InputFieldProps) => {
           src={props.src}
           size={props.size}
           decor={props.decor}
+          accept={props.accept}
+          hidden={props.hidden}
+          multiple={props.multiple}
           onChange={props.onChange}
         />
         <LabelBase size={props.size} htmlFor={props.id}>{props.placeholder}</LabelBase>

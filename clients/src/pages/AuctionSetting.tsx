@@ -14,6 +14,7 @@ import {
   AuctionSettingNull } from '../css/AuctionSetting.styles';
 import MediaModal from '../components/Modals/MediaModal';
 import Avatar from '../components/Avatars/Avatar';
+import PersonsModal from '../components/Modals/PersonsModal';
 
 interface SettingRowsProps {
   headerName: string,
@@ -86,7 +87,7 @@ const AuctionMiddle = () => {
 
   const handleClickEvent = (event: MouseEvent<HTMLButtonElement>) => {
     const targets = event.currentTarget.name.split("-")[1];
-    if (targets === "direcor" || targets === "member") setIsAuctionOpen(!isAuctionOpen);
+    if (targets === "director" || targets === "member") setIsAuctionOpen(!isAuctionOpen);
     setNameTarget(targets);
   }
 
@@ -118,6 +119,7 @@ const AuctionMiddle = () => {
         name="auction-finish"
         decor='variant-red'
         color="#f5f5f5">완료</Button>
+      <PersonsModal types={nameTarget} isModalOpen={isAuctionOpen} setIsModalOpen={setIsAuctionOpen} />
     </AuctionSettingSection>
   );
 }

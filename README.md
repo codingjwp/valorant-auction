@@ -4,19 +4,19 @@
 개인 방송을 보는 중 경매를 하는 걸 보고 나도 한번 만들어 보고 싶다고 생각해서 한번 해보았습니다.
 
 ### 실행 방법
-```code
-yarn
-yarn dev
+```bash
+$ yarn
+$ yarn dev
 ```
 
-### 사용한 라이브러리
+### Front-end 사용한 라이브러리
 1. react + vite
 2. react-router-dom
 3. vite-plugin-svgr
 4. styled-components
-5. recoil(사용 예정)
+5. recoil
 
-## 할일 목록
+## Front-end 할일 목록
 :white_large_square: Component 만들기 [(styled-components 사용)](https://styled-components.com/)   
  - :ballot_box_with_check: Button Components 만들기 [(Button.tsx, Button.styles.tsx)](clients/src/components/Buttons)   
  - :ballot_box_with_check: InputField Components 만들기 [(InputField.tsx, InputField.styles.tsx)](clients/src/components/InputFields)   
@@ -37,3 +37,29 @@ yarn dev
   2. :white_large_square: 감독 등록 모달 만들기
   3. :white_large_square: 선수 등록 모달 만들기
   4. :white_large_square: 등록된 내용 모두 초기화 만들기.
+
+<br>
+
+## Back-end 사용 기술
+1. Nestjs
+
+## Back-end 실행 방법
+
+```bash
+$ yarn install
+
+# development
+$ yarn run start
+
+# watch mode
+$ yarn run start:dev
+
+# production mode
+$ yarn run start:prod
+```
+
+## Bront-end 할일 목록
+:white_large_square Room id 만들기
+
+
+

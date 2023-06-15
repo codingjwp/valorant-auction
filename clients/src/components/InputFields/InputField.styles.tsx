@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 interface InputAttrsProps {
   id?: string;
+  title?: string;
   type?: HTMLInputTypeAttribute;
   alt?: string;
   name?: string;
@@ -14,6 +15,9 @@ interface InputAttrsProps {
   value?: string;
   form?: string;
   src?: string;
+  accept?: string;
+  hidden?: boolean;
+  multiple?: boolean;
 }
 
 export interface InputBaseProps extends InputAttrsProps {
@@ -84,6 +88,7 @@ export const InputBase = styled.input.attrs<InputAttrsProps>(props => (
   {
     id: props.id,
     type: props.type || "text",
+    title: props.title,
     alt: props.alt,
     required: props.required || true,
     name: props.name,
@@ -94,18 +99,21 @@ export const InputBase = styled.input.attrs<InputAttrsProps>(props => (
     value: props.value,
     form: props.form,
     src: props.src,
+    accept: props.accept,
+    hidden: props.hidden,
+    multiple: props.multiple,
   }
   ))<InputBaseProps>`
   outline: none;
   border: 0;
-  border-bottom: .02rem solid white;
+  border-bottom: ${props => props.type !== "file" && '.02rem solid #f5f5f5'};
   background-color: #323232;
   color: white;
   ${props => props.size && inputSize[props.size || "sm"]};
   margin: 10px 0;
   transition: 0.5s ease-in;
   &:focus, &:valid {
-    border-bottom: .02rem solid ${props => props.decor && inputColor[props.decor || "red"]};
+    border-bottom: ${props => props.type !== "file" && `.02rem solid inputColor[${props.decor} || "red"]`};
   };
   &:focus + label, &:valid + label {
     transition: 0.5s ease-in;
