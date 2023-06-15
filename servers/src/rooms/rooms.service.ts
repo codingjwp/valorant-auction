@@ -28,9 +28,7 @@ export class RoomsService {
   }
 
   async getRoomNumber(roomNumber: string): Promise<boolean> {
-    console.log("tttt : ", this.roomData);
     const roomNum = this.roomData?.filter((room) => room.roomNum === roomNumber);
-    console.log("before : ", roomNum);
     return roomNum.length === 0 ? false : true ;
   }
 
@@ -64,7 +62,6 @@ export class RoomsService {
           member: undefined,
         }]}
     });
-    console.log(this.roomData);
     return true;
   }
 

@@ -44,7 +44,6 @@ const RoomFrom = ({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: React.Dispat
           const res = await roomPostFetch('rooms', nickName);
           if (res.status === true) {
             setIsOpen(false);
-            console.log(res.data);
             navigate(`member?rooms=${res.data}&nick=${nickName}`);
           }
           else console.error(res.data); 
