@@ -28,8 +28,10 @@ export class RoomsService {
   }
 
   async getRoomNumber(roomNumber: string): Promise<boolean> {
+    console.log("tttt : ", this.roomData);
     const roomNum = this.roomData?.filter((room) => room.roomNum === roomNumber);
-    return roomNum ? true : false;
+    console.log("before : ", roomNum);
+    return roomNum.length === 0 ? false : true ;
   }
 
   async createRoomData(nick: string, count = 0): Promise<string> {
@@ -38,27 +40,31 @@ export class RoomsService {
     }
     const roomsNumber = this.getRandomRoomNumber();
     const exists = await this.getRoomNumber(roomsNumber);
+
     if (exists) return this.createRoomData(nick, count + 1);
     this.roomData.push({
       roomNum: roomsNumber,
       admin: nick,
       directors: undefined,
       member: undefined});
+
     return roomsNumber;
   }
 
   async joinRoomDatas(roomNumber: string, nick: string): Promise<boolean> {
     const checkNum = await this.getRoomNumber(roomNumber);
     if (!checkNum) throw new Error("Failed to not found room number.");
+
     this.roomData.forEach((room) => {
       if (room.roomNum === roomNumber) {
-        room.directors.push({
+        room.directors = [...(room.directors || []), {
           name: nick,
           point: undefined,
           imgUrl: undefined,
-          member: undefined})
-      }    
+          member: undefined,
+        }]}
     });
+    console.log(this.roomData);
     return true;
   }
 

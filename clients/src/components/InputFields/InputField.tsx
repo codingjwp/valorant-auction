@@ -16,6 +16,7 @@ const InputField = (props: InputFieldProps) => {
           title={props.title}
           name={props.name}
           required={props.required}
+          disabled={props.disabled}
           placeholder=''
           maxLength={props.maxLength}
           minLength={props.minLength}
