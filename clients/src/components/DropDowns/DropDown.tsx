@@ -19,7 +19,7 @@ const DropDown = ({isOpen, menus, children}: DropDownProps) => {
       {children}
       <DropDownContainer open={isOpen}>
         {menus.map((menu) => {
-          return (<DropDownMenu key={menu.idx} onClick={menu.onClick} >{menu.name}</DropDownMenu>);
+          return (<DropDownMenu key={menu.idx} title={menu.idx} onClick={menu.onClick} >{menu.name}</DropDownMenu>);
         })}
       </DropDownContainer>
     </DropDownBase>

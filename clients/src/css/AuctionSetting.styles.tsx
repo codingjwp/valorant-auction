@@ -41,7 +41,7 @@ export const AuctionSettingSection = styled.section<{position?: string}>`
   ${props => props.position === 'bottom' && css`
     display: grid;
     height: 100%;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     column-gap: 5px;
   `}
 `
@@ -86,8 +86,4 @@ export const AuctionSettingSvg = styled(SettingSvg)`
       opacity: 0.8;
     }
   }
-`;
-
-export const AuctionSettingNull = styled.div`
-  background-color: #323232;
 `;

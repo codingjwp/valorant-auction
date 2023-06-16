@@ -1,36 +1,18 @@
 import { ChangeEvent, useState, useRef, FormEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ReactComponent as CloseSvg } from '../../assets/svgs/close.svg'
-import { ReactComponent as ToolTipSvg } from '../../assets/svgs/tooltip.svg'
-import { roomPatchFetch, roomPostFetch } from "../../custom/roomPostFetch";
-import styled from "styled-components";
-import Button from "../Buttons/Button";
-import InputField from "../InputFields/InputField";
-import Modal from "./Modal";
-import ToolTips from "../ToolTips/ToolTips";
+import { roomNumberStates } from '../../../states/roomState';
+import { useRecoilState } from 'recoil'
+import { roomPatchFetch, roomPostFetch } from "../../../custom/roomPostFetch";
+import RoomCheck from "./RoomCheck";
+import Button from "../../Buttons/Button";
+import InputField from "../../InputFields/InputField";
 
-interface EssentialModalProps {
-  isOpen: boolean,
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
-}
-
-const RoomFormLi = styled.li<{ischecked?: string }>`
-  display: inline-block;
-  border-radius: 15px;
-  padding: 5px;
-  margin-left: 5px;
-  -webkit-user-select: none;
-  user-select: none;
-  border: 0;
-  background-color: #D41E1E;
-  background-color: ${props => props.ischecked === 'true' && '#D41E1E77'};
-`
-
-const RoomFrom = ({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
+const RoomForm = ({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isCheck, setIsCheck] = useState(true);
   const [roomValue, setRoomValue] = useState("");
   const [nickName, setNickName] = useState("");
+  const [_, setRooms] = useRecoilState(roomNumberStates);
   const navigate = useNavigate();
 
    const handleFormSumbit = async (e: FormEvent<HTMLFormElement>) => {
@@ -44,6 +26,7 @@ const RoomFrom = ({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: React.Dispat
           const res = await roomPostFetch('rooms', nickName);
           if (res.status === true) {
             setIsOpen(false);
+            setRooms(res.data);
             navigate(`member?rooms=${res.data}&nick=${nickName}`);
           }
           else console.error(res.data); 
@@ -52,6 +35,7 @@ const RoomFrom = ({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: React.Dispat
           const res = await roomPatchFetch('rooms', roomValue, nickName);
           if (res.status === true) {
             setIsOpen(false);
+            setRooms(roomValue);
             navigate(`auction?rooms=${roomValue}&nick=${nickName}`);
           } 
           else console.error(res.data);
@@ -82,10 +66,7 @@ const RoomFrom = ({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: React.Dispat
 
   return (
     <form onSubmit={handleFormSumbit} ref={formRef}>
-      <ul>
-        <RoomFormLi ischecked={`${isCheck}`} onClick={handleClickChange}>생성</RoomFormLi>
-        <RoomFormLi ischecked={`${!isCheck}`} onClick={handleClickChange}>참가</RoomFormLi>
-      </ul>
+      <RoomCheck isCheck={isCheck} onClick={handleClickChange} />
       {!isCheck && <InputField id="room-numbers" name="roomnumber" type="text" size="full" decor="red" disabled={isCheck ? true : false} placeholder="Room Number" value={roomValue} onChange={handleRoomChange} />}
       <InputField id="room-nickname" name="nickname" type="text" size="full" decor="red" placeholder="Nick Name" value={nickName} onChange={handleNickNameChange} />
       {isCheck 
@@ -95,42 +76,4 @@ const RoomFrom = ({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: React.Dispat
   )
 }
 
-const RoomHeader = ({title, setIsOpen}: {title?: string, setIsOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
-  const [toolOpen, setToolOpen] = useState(false);
-  const handleCloseClick = () => {
-    setIsOpen(false);
-    const form = document.querySelector("form");
-    (form as HTMLFormElement).reset();
-  }
-  const handleToolTipOpenClick = () => {
-    setToolOpen(!toolOpen);
-  }
-
-  return (
-    <>
-      {title}
-      <div>
-        <ToolTips
-          toolOpen={toolOpen}
-          setToolOpen={setToolOpen}
-          moveposition={{x: "-134px", y: "-89px"}}
-          titleContent="1. Room Number은 대소문자와 숫자, 한글만 가능 합니다.
-          2. Nick Name은 대소문자와 숫자, 한글만 가능 합니다.">
-          <ToolTipSvg onClick={handleToolTipOpenClick} />
-        </ToolTips>
-        <CloseSvg onClick={handleCloseClick} />
-      </div>
-    </>
-  )
-}
-
-const RoomModal = ({isOpen, setIsOpen}: EssentialModalProps) => {
-
-  return (
-    <Modal isOpen={isOpen} size="md" >
-      <RoomHeader title="ROOM INFORMATION" setIsOpen={setIsOpen} />
-      <RoomFrom isOpen={isOpen} setIsOpen={setIsOpen} />
-    </Modal>
-  );
-}
-export default RoomModal;
+export default RoomForm;

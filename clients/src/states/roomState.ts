@@ -7,6 +7,11 @@ interface personsProps {
   imgSrc: string,
 }
 
+export const roomNumberStates = atom<string>({
+  key: 'roomNumberState',
+  default: ""
+})
+
 export const directorStates = atom<personsProps[]>({
   key: 'directorState',
   default: []

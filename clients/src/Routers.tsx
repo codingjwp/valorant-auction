@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Layout from './pages/Layout'
 import Home from './pages/Home'
 import AuctionRoom from './pages/AuctionRoom'
-import AuctionSetting from './pages/AuctionSetting'
+import AuctionSetting from './pages/settingpage/AuctionSetting'
 
 
 const Routers = () => {
