@@ -40,7 +40,7 @@ export async function changeStream(props: ChangeStremProps) {
         audio: {deviceId: props.audios}
       });
     }
-  } catch(e: any) {
-    console.log(e);
+  } catch(err: any) {
+    console.error(err);
   }
 }

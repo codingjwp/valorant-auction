@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuctionSettingHeader, AuctionTitleSvg, AuctionSettingSvg } from '../../css/AuctionSetting.styles'
 import { useRecoilValue } from 'recoil';
 import { roomNumberStates } from '../../states/roomState'
+import { toast, Toaster } from 'react-hot-toast'
 import DropDown from "../../components/DropDowns/DropDown";
 import MediaModal from '../../components/Modals/MediaModal';
 
@@ -32,9 +33,25 @@ const AutcionHeader = () => {
   const handleChilpBoardCopy = async () => {
     try {
       await navigator.clipboard.writeText(roomNumber);
-      alert("Sucess ClipBoard Copy");
-    } catch(err: any) {
-      alert(err.message);
+      toast.success("클립보드에 복사를 성공하였습니다.", {
+        duration: 2000,
+        position: 'top-right',
+        style: {
+          background: '#323232',
+          color: '#f5f5f5',
+          border: '2px solid #D41E1E'
+        }
+      });
+    } catch(err: any) {;
+      toast.error("클립보드에 복사를 실패하였습니다.", {
+        duration: 2000,
+        position: 'top-right',
+        style: {
+          background: '#b11919',
+          color: '#f5f5f5',
+          border: '2px solid #323232'
+        }
+      });
     }
     
   }
@@ -61,7 +78,8 @@ const AutcionHeader = () => {
       <DropDown isOpen={isOpen} menus={menus}>
         <AuctionSettingSvg onClick={() => setIsOpen(!isOpen)} />
       </DropDown>
-      <MediaModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}></MediaModal>
+      <MediaModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <Toaster />
     </AuctionSettingHeader>
   );
 }
