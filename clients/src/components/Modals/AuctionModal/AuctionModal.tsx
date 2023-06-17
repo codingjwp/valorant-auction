@@ -1,53 +1,18 @@
-import React from "react";
 import Modal from "../Modal";
-import Button from "../../Buttons/Button"
-import { AuctionCloseeSvg } from "./AuctionModal.styles";
+import { HeaderProps } from './AuctionModal.styles'
+import AuctionModalBntGroup from "./AuctionModalBntGroup";
+import AuctionModalHeader from "./AuctionModalHeader";
+import AuctionModalMember from "./AuctionModalMember";
 
-interface AuctionModalProps {
-  types: string;
-  isModalOpen: boolean;
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
-const PersonsHeader = ({title, setIsModalOpen}: {title?: string, setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
-  const handleCloseClick = () => { setIsModalOpen(false);}
-
+const AuctionModal = (props: HeaderProps) => {
   return (
-    <>
-      {title}
-      <AuctionCloseeSvg onClick={handleCloseClick}/>
-    </>
-  )
-}
-
-const PersonsMainMember = ({setIsModalOpen}: {setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
-  return (
-    <div>
+    <Modal isOpen={props.modalOpen as boolean} size="lr">
+      <AuctionModalHeader headerTitle={props.headerTitle.toUpperCase()} setModalOpen={props.setModalOpen} />
       <div>
-        <Button 
-          type="button"
-          size="half"
-          name="member-register"
-          decor="variant-red"
-          color="#f5f5f5"
-          >등록</Button>
-        <Button 
-          type="button"
-          size="half"
-          name="member-closer"
-          decor="variant-red"
-          color="#f5f5f5"
-          onClick={() => setIsModalOpen(false)}>닫기</Button>
-        </div>
-    </div>
-  );
-}
-
-const AuctionModal = (props: AuctionModalProps) => {
-  return (
-    <Modal isOpen={props.isModalOpen} size="md">
-      <PersonsHeader title={props.types.toUpperCase()} setIsModalOpen={props.setIsModalOpen} />
-      <PersonsMainMember setIsModalOpen={props.setIsModalOpen}/>
+        <AuctionModalMember />
+        <AuctionModalBntGroup setModalOpen={props.setModalOpen}/>
+      </div>
     </Modal>
   );
 }

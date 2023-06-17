@@ -1,11 +1,10 @@
-import { HTMLInputTypeAttribute } from 'react';
 import styled, { css } from 'styled-components';
 
 interface InputAttrsProps {
   id?: string;
   title?: string;
   disabled?: boolean;
-  type?: HTMLInputTypeAttribute;
+  type?: "number" | "text" | "email" | "password";
   alt?: string;
   name?: string;
   required?: boolean;

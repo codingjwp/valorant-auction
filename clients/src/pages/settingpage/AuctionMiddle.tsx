@@ -32,7 +32,7 @@ const AuctionMiddle = () => {
         name="auction-finish"
         decor='variant-red'
         color="#f5f5f5">완료</Button>
-        <AuctionModal types="Auction Member Registration" isModalOpen={isAuctionOpen} setIsModalOpen={setIsAuctionOpen} />
+        <AuctionModal headerTitle="Auction Member Registration" modalOpen={isAuctionOpen} setModalOpen={setIsAuctionOpen} />
     </AuctionSettingSection>
   );
 }

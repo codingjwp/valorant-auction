@@ -4,6 +4,7 @@ import { AvatarBaseContainer, AvatarBaseHead, AvatarBaseImg, AvatarBaseName } fr
 interface AvatarProps {
   headContent?: string;
   nameContent?: string;
+
   src?: string;
   alt?: string;
   size?: "sm" | "md" | "lr"
@@ -11,6 +12,21 @@ interface AvatarProps {
 }
 
 const Avatar = (props: AvatarProps) => {
+  const imgSize = {
+    "sm": {
+      "width": '40px',
+      "height": '40px',
+    },
+    "md": {
+      "width": '80px',
+      "height": '80px',
+    },
+    "lr": {
+      "width": '120px',
+      "height": '120px',
+    },
+  }
+  
   const handleImgSrcError = (event: SyntheticEvent<HTMLImageElement>) => {
     event.currentTarget.src = "/src/assets/svgs/baseavatar.svg";
   }
@@ -19,8 +35,8 @@ const Avatar = (props: AvatarProps) => {
     <AvatarBaseContainer>
       {props.headContent ? <AvatarBaseHead>{props.headContent}</AvatarBaseHead> : null}
       {props.src 
-      ? <AvatarBaseImg size={props.size || "sm"} shape={props.shape} src={props.src} alt={props.src} onError={handleImgSrcError} />
-      : <AvatarBaseImg size={props.size || "sm"} shape={props.shape} src="/src/assets/svgs/baseavatar.svg" alt={`baseImg-${props.src}`} />}
+      ? <AvatarBaseImg width={imgSize[props.size || "sm"].width} height={imgSize[props.size || "sm"].height} shape={props.shape} src={props.src} alt={props.alt} onError={handleImgSrcError} />
+      : <AvatarBaseImg width={imgSize[props.size || "sm"].width} height={imgSize[props.size || "sm"].height} shape={props.shape} src="/src/assets/svgs/baseavatar.svg" alt={`baseImg-${props.alt}`} />}
       {props.nameContent ? <AvatarBaseName>{props.nameContent}</AvatarBaseName> : null}
     </AvatarBaseContainer>
   )

@@ -19,23 +19,23 @@ interface AvatarImgProps {
   shape?: "rounded" | "circle";
 }
 
-const imgSize = {
-  "sm" : css`
-    width: 40px;
-    height: 40px;
-  `,
-  "md" : css`
-    width: 80px;
-    height: 80px;
-  `,
-  "lr" : css`
-    width: 120px;
-    height: 120px;
-  `,
-}
+// const imgSize = {
+//   "sm" : css`
+//     width: 40px;
+//     height: 40px;
+//   `,
+//   "md" : css`
+//     width: 80px;
+//     height: 80px;
+//   `,
+//   "lr" : css`
+//     width: 120px;
+//     height: 120px;
+//   `,
+// ${props => props.size && imgSize[props.size]}
+// }
 
 export const AvatarBaseImg = styled.img<AvatarImgProps>`
-  ${props => props.size && imgSize[props.size]}
   ${props => props.shape === "rounded" && css`
     border-radius: 5px;
   `}
