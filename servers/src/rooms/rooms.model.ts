@@ -13,14 +13,15 @@ export interface RoomsData {
     imgUrl?: string,
     member?: {
       name: string,
-      point: number,
-      grop: string,
-      imgUrl: string,
+      point?: number,
+      grop?: string,
+      imgUrl?: string,
     }[]
   }[],
   member?: {
     name: string,
-    group: string,
-    imgUrl: string,
+    group?: string,
+    imgUrl?: string,
+    guideUrl?: string,
   }[]
 }

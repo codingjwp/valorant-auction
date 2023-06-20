@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-interface memberProps {
+interface MemberProps {
   idx: string,
   name: string,
   rating: string,
@@ -8,12 +8,12 @@ interface memberProps {
   guideUrl?: string,
 }
 
-interface directorProps {
+interface DirectorProps {
   idx: string,
   name: string,
   point?: number,
   imgSrc?: File,
-  member?: memberProps[]
+  member?: MemberProps[]
 }
 
 export const roomNumberStates = atom<string>({
@@ -21,12 +21,12 @@ export const roomNumberStates = atom<string>({
   default: ""
 })
 
-export const directorStates = atom<directorProps[]>({
+export const directorStates = atom<DirectorProps[]>({
   key: 'directorState',
   default: []
 })
 
-export const memberStates = atom<memberProps[]>({
+export const memberStates = atom<MemberProps[]>({
   key: 'memberState',
   default: []
 })
