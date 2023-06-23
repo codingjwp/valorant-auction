@@ -2,35 +2,6 @@ import styled, {css} from 'styled-components';
 import { ReactComponent as ValorantSvg } from '../assets/svgs/valorant.svg'
 import { ReactComponent as SettingSvg } from '../assets/svgs/settings.svg'
 
-export const AuctionSettingCenter = styled.div`
-  background-color: #323232;
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-`
-
-export const AuctionSettingBase = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 1366px;
-  height: 100%;
-  background-color: #323232;
-  border-left: 1px solid #D41E1E;
-  border-right: 1px solid #D41E1E;
-`;
-
-export const AuctionSettingHeader = styled.header`
-  width: 100%;
-  height: 60px;
-  background-color: #D41E1E;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`
-
 export const AuctionSettingSection = styled.section<{position?: string}>`
   width: 100%;
   ${props => props.position === 'middle' && css`

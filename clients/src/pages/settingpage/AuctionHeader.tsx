@@ -1,6 +1,7 @@
 import { useState, MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuctionSettingHeader, AuctionTitleSvg, AuctionSettingSvg } from '../../css/AuctionSetting.styles'
+import { AuctionTitleSvg, AuctionSettingSvg } from '../../css/AuctionSetting.styles'
+import { AuctionBaseHeader} from '../../css/AuctionBase.styles'
 import { useRecoilValue } from 'recoil';
 import { roomNumberStates } from '../../states/roomState'
 import { toast, Toaster } from 'react-hot-toast'
@@ -73,14 +74,14 @@ const AutcionHeader = () => {
   }
 
   return (
-    <AuctionSettingHeader>
+    <AuctionBaseHeader>
       <AuctionTitleSvg />
       <DropDown isOpen={isOpen} menus={menus}>
         <AuctionSettingSvg onClick={() => setIsOpen(!isOpen)} />
       </DropDown>
       <MediaModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       <Toaster />
-    </AuctionSettingHeader>
+    </AuctionBaseHeader>
   );
 }
 

@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Layout from './pages/Layout'
 import Home from './pages/Home'
-import AuctionRoom from './pages/AuctionRoom'
+import AuctionRoom from './pages/roompages/AuctionRoom'
 import AuctionSetting from './pages/settingpage/AuctionSetting'
 
 

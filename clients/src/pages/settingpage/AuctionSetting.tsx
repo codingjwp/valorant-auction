@@ -1,4 +1,4 @@
-import { AuctionSettingCenter, AuctionSettingBase } from '../../css/AuctionSetting.styles';
+import { AuctionBaseCenter, AuctionBaseDiv} from '../../css/AuctionBase.styles'
 import AutcionHeader from './AuctionHeader';
 import AuctionMiddle from './AuctionMiddle';
 import AuctionBottom from './AuctionBottom';
@@ -6,13 +6,13 @@ import AuctionBottom from './AuctionBottom';
 const AutionSetting = () => {
 
   return (
-    <AuctionSettingCenter>
-      <AuctionSettingBase>
+    <AuctionBaseCenter>
+      <AuctionBaseDiv>
         <AutcionHeader />
         <AuctionMiddle />
         <AuctionBottom />
-      </AuctionSettingBase>
-    </AuctionSettingCenter>
+      </AuctionBaseDiv>
+    </AuctionBaseCenter>
   );
 };
 

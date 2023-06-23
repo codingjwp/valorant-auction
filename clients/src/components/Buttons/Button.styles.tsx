@@ -131,6 +131,8 @@ export const ButtonBase = styled.button.attrs<ButtonAttrsProps>(props =>(
   color: ${props=> props.color || "black"};
   ${props => props.decor && bgColors[props.decor]};
   ${props => props.size && btnSizes[props.size]};
+  width: ${props => props.width};
+  height: ${props => props.height};
   &:disabled {
     opacity: 0.3;
   }

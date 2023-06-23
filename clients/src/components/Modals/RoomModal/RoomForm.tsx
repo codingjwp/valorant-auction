@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { roomNumberStates } from '../../../states/roomState';
 import { useRecoilState } from 'recoil'
 import { roomPatchFetch, roomPostFetch } from "../../../custom/roomPostFetch";
+import { socket } from "../../../App";
 import RoomCheck from "./RoomCheck";
 import Button from "../../Buttons/Button";
 import InputField from "../../InputFields/InputField";
@@ -27,7 +28,8 @@ const RoomForm = ({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: React.Dispat
           if (res.status === true) {
             setIsOpen(false);
             setRooms(res.data);
-            navigate(`member?rooms=${res.data}&nick=${nickName}`);
+            socket.emit('create-rooms', res.data);
+            // navigate(`member?rooms=${res.data}&nick=${nickName}`);
           }
           else console.error(res.data); 
         } 
