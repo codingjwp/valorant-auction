@@ -13,19 +13,6 @@ export class RoomsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
   private readonly logger = new Logger(RoomsGateway.name);
 
   afterInit() {
-    this.nsp.adapter.on('create-room', (room) => {
-      this.logger.log(`ROOM ${room}이 생성되었습니다.`);
-    })
-    this.nsp.adapter.on('join-rooms', (roomNumber: string, nick: string) => {
-      this.logger.log(`ROOM ${roomNumber}에 ${nick}이 입장하였습니다.`);
-    })
-    this.nsp.adapter.on('out-rooms', (roomNumber: string, nick: string) => {
-      this.logger.log(`ROOM ${roomNumber}에서 ${nick}이 퇴장하였습니다.`);
-    })
-    this.nsp.adapter.on('delete-rooms', (roomNumber: string, nick: string) => {
-      this.logger.log(`ROOM ${roomNumber}에서 ${nick} 호스트가 방에서 나갔습니다.`);
-    })
-
     this.logger.log('웹 소켓 초기화');  
   }
 
@@ -35,5 +22,22 @@ export class RoomsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
   handleDisconnect(@ConnectedSocket() socket: Socket) {
     this.logger.log(`${socket.id}에서 소켓 연결 종료`);
   }
-  
+
+  @SubscribeMessage('createRooms')
+  handleCreateRoom(socket: Socket, @MessageBody() data:{
+    roomNumber: string,
+    nick: string
+  }){
+    socket.join(roomNumber);
+    socket.emit('')
+  }
+
+  @SubscribeMessage('joinRooms')
+  handleCreateRoom(socket: Socket, @MessageBody() data:{
+    roomNumber: string,
+    nick: string
+  }){
+    socket.join(roomNumber);
+    socket.emit('')
+  }
 }
