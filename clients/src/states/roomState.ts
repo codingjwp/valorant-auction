@@ -4,8 +4,7 @@ interface MemberProps {
   idx: string,
   name: string,
   rating: string,
-  imgSrc: File,
-  guideUrl?: string,
+  imgSrc: Blob,
 }
 
 interface DirectorProps {

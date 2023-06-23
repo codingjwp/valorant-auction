@@ -11,8 +11,8 @@ export class RoomsController {
   @Post()
   async createRoomsNumber(@Body('nick') nick: string, @Res() res: Response){
     try{
-      const roomsNumber = await this.roomsService.createRoomData(nick);
-      res.status(HttpStatus.CREATED).json({ roomsNumber: roomsNumber });
+      const roomNumber = await this.roomsService.createRoomsData(nick);
+      res.status(HttpStatus.CREATED).json({ roomNumber: roomNumber });
     } catch (err: any) {
       res.status(HttpStatus.BAD_REQUEST).send({ message: err.message });
     }
@@ -21,7 +21,7 @@ export class RoomsController {
   @Patch()
   async joinRoomsData(@Body() body: BaseData, @Res() res: Response) {
     try {
-      const result = await this.roomsService.joinRoomDatas(body.roomNumber, body.nick);
+      await this.roomsService.joinRoomsData(body.roomNumber, body.nick);
       res.status(HttpStatus.OK).send({message: true});
     } catch (err: any) {
       res.status(HttpStatus.BAD_REQUEST).send({ message: err.message });
@@ -29,7 +29,14 @@ export class RoomsController {
   }
 
   @Delete()
-  async removeRoomsData(@Query() query: BaseData) {
-    const result = await this.roomsService.removeRoomDatas(query.roomNumber, query.nick);
+  async removeRoomsData(@Body() body: BaseData, @Res() res: Response) {
+    try {
+      const adminResult = await this.roomsService.getMemberAdmin(body.roomNumber, body.nick);
+      adminResult ? await this.roomsService.removeRoomData(body.roomNumber)
+      : await this.roomsService.leaveRoomData(body.roomNumber, body.nick)
+      res.status(HttpStatus.OK).send({message: true});
+    } catch (err: any) {
+      res.status(HttpStatus.BAD_REQUEST).send({ message: err.message});
+    }
   }
 }

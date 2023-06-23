@@ -3,88 +3,81 @@ import { RoomsData } from './rooms.model'
 
 @Injectable()
 export class RoomsService {
-  private roomData: RoomsData[] = [];
+  private roomsData: RoomsData[] = [];
   private RANDOMCHAR: string[] = 'ABCDEFGHIJKLNMOPQRSTUVWXZabcdefghijklnmopqrstuvwxz0123456789'.split('');
   private MAX_RECURSION = 3;
 
 
-  private getRandomRoomNumber(): string {
+  async getRandomRoomNumber(): Promise<string> {
     let roomNum = '';
     for (let i = 0; i < 8; i++) {
        roomNum += this.RANDOMCHAR[Math.floor(Math.random() * this.RANDOMCHAR.length)];
     }
     return roomNum
   }
-
-  private getRoomAdmin(nick: string) {
-    const result  = this.roomData.findIndex((room) => room.admin === nick);
-    return (result < 0 || result === undefined) ? false : true 
-  }
-
-  private getRoomDirectors(roomNumber: string, nick: string) {
-    const index = this.roomData.findIndex((room) => room.roomNum === roomNumber);
-    const result = this.roomData[index].directors.findIndex((director) => director.name === nick);
-    return (result < 0 || result === undefined) ? false : true;
-  }
-
+  
   async getRoomNumber(roomNumber: string): Promise<boolean> {
-    const roomNum = this.roomData?.filter((room) => room.roomNum === roomNumber);
-    return roomNum.length === 0 ? false : true ;
+    const number = this.roomsData.filter((room) => room.roomNumber === roomNumber);
+    return number.length === 1 ? true : false;
   }
 
-  async createRoomData(nick: string, count = 0): Promise<string> {
-    if (count > this.MAX_RECURSION) {
-      throw new Error('Failed to create room number.');
-    }
-    const roomsNumber = this.getRandomRoomNumber();
-    const exists = await this.getRoomNumber(roomsNumber);
+  async createRoomsData(nick: string, count = 0): Promise<string> {
+    if (count > this.MAX_RECURSION) throw new Error("Failed to create room number.");
+    const roomNumber = await this.getRandomRoomNumber();
+    const number = await this.getRoomNumber(roomNumber);
+    if (number) return this.createRoomsData(nick, count + 1);
 
-    if (exists) return this.createRoomData(nick, count + 1);
-    this.roomData.push({
-      roomNum: roomsNumber,
-      admin: nick,
-      directors: undefined,
-      member: undefined});
-
-    return roomsNumber;
+    this.roomsData.push(...(this.roomsData || []), {
+      roomNumber: roomNumber,
+      members: [{
+        nick: nick,
+        pointer: 0,
+        imageFile: '',
+        admin: true,
+      }],
+    });
+    return roomNumber;
   }
 
-  async joinRoomDatas(roomNumber: string, nick: string): Promise<boolean> {
-    const checkNum = await this.getRoomNumber(roomNumber);
-    if (!checkNum) throw new Error("Failed to not found room number.");
+  async joinRoomsData(roomNumber: string, nick: string): Promise<boolean> {
+    const number = await this.getRoomNumber(roomNumber);
+    if (!number) throw new Error("Failed to not create room number");
 
-    this.roomData.forEach((room) => {
-      if (room.roomNum === roomNumber) {
-        room.directors = [...(room.directors || []), {
-          name: nick,
-          point: undefined,
-          imgUrl: undefined,
-          member: undefined,
-        }]}
+    this.roomsData.forEach((room) => {
+      if (room.roomNumber === roomNumber) {
+        room.members.push({
+          nick: nick,
+          pointer: 0,
+          imageFile: '',
+          admin: false,
+      })}
     });
     return true;
   }
 
-  async removeRoomDatas(roomNumber: string, nick: string) {
-    const admin = this.getRoomAdmin(nick);
-    const directors = this.getRoomDirectors(roomNumber, nick);
-    if (admin) {
-      this.roomData = this.roomData.filter((room) => room.roomNum !== roomNumber);
-    } else if (directors) {
-      this.roomData.forEach((room) => {
-        if (room.roomNum === roomNumber) {
-          room.directors = room.directors.filter((director) => director.name !== nick);
-        }
-      })
-    }
+  async getMemberAdmin(roomNumber: string, nick: string): Promise<boolean> {
+    const number = await this.getRoomNumber(roomNumber);
+    if (!number) throw new Error("Failed to not find room number");
+    const room = this.roomsData.find((room) => room.roomNumber === roomNumber);
+    const result = room.members.find((member) => member.nick === nick).admin;
+    return result;
+  }
+
+  async removeRoomData(roomNumber: string): Promise<boolean> {
+    const number = await this.getRoomNumber(roomNumber);
+    if (!number) throw new Error("Failed to not find room number");
+    this.roomsData = this.roomsData.filter((room) => room.roomNumber != roomNumber);
     return true;
   }
 
-  deleteDirectors(rooNumber: string, nick: string) {
-    return true;
-  }
+  async leaveRoomData(roomNumber: string, nick: string): Promise<boolean> {
+    const number = await this.getRoomNumber(roomNumber);
+    if (!number) throw new Error("Failed to not find room number");
 
-  updateMemberDatas(roomNumber: string) {
+    this.roomsData.forEach((room) => {
+      if (room.roomNumber === roomNumber) 
+        room.members = room.members.filter((member) => member.nick !== nick);
+    })
     return true;
   }
 }

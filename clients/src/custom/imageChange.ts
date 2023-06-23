@@ -1,20 +1,21 @@
 import { useState, useEffect } from "react";
 
-export const useImageChange = (src: string | File | undefined) => {
+export const useImageChange = (src: string | File | Blob | undefined) => {
   const [images, setImage] = useState('');
 
   useEffect(() => {
     const reader = new FileReader();
-    if ((typeof src) === 'object') {
+    if (src instanceof File) {
       reader.readAsDataURL(src as File);
       reader.onloadend = () => {
         setImage(reader.result as string);
       }
     } else if ((typeof src) === 'string') {
       setImage(src as string);
-    } else {
-      setImage('');
-    }
+    } else if (src instanceof Blob) {
+      setImage(URL.createObjectURL(src));
+    } 
+    else setImage('');
   }, [src])
   return images;
 }

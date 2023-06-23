@@ -28,8 +28,11 @@ const RoomForm = ({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: React.Dispat
           if (res.status === true) {
             setIsOpen(false);
             setRooms(res.data);
-            socket.emit('create-rooms', res.data);
-            // navigate(`member?rooms=${res.data}&nick=${nickName}`);
+            socket.emit('createRooms', {
+              roomNumber: res.data,
+              nick: nickName,
+            });
+            navigate(`member?rooms=${res.data}&nick=${nickName}`);
           }
           else console.error(res.data); 
         } 
@@ -38,6 +41,10 @@ const RoomForm = ({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: React.Dispat
           if (res.status === true) {
             setIsOpen(false);
             setRooms(roomValue);
+            socket.emit('joinRooms', {
+              roomNumber: roomValue,
+              nick: nickName,
+            });
             navigate(`auction?rooms=${roomValue}&nick=${nickName}`);
           } 
           else console.error(res.data);

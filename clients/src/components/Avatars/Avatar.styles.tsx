@@ -15,8 +15,9 @@ export const AvatarBaseHead = styled.div`
 `;
 
 interface AvatarImgProps {
-  size?: "sm" | "md" | "lr"
+  size?: "sm" | "md" | "lr";
   shape?: "rounded" | "circle";
+  type?: string;
 }
 
 export const AvatarBaseImg = styled.img<AvatarImgProps>`
@@ -26,14 +27,14 @@ export const AvatarBaseImg = styled.img<AvatarImgProps>`
   ${props => props.shape === "circle" && css`
     border-radius: 50%;
   `}
-  padding: 10px;
+  padding: ${props => props.type === 'auction' && props.type };
   object-fit: fill;
 `;
 
 export const AvatarBaseName = styled.div<{size?: string}>`
   width: 100%;
-  padding: 5px 0;
   color: white;
   text-align: center;
+  padding: 5px 0;
   font-size: ${props => props.size === 'full' && '3rem'};
 `;

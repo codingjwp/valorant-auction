@@ -30,7 +30,7 @@ const AuctionModalBtnGroup = (props: BtnGroupProps) => {
         color="#f5f5f5"
         disabled={memberLength === 25 ? false : true}
         onClick={handleCompleteClick}
-        >"완료"</Button>
+        >"저장"</Button>
       <Button 
         type="button"
         size="half"

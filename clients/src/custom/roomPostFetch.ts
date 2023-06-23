@@ -9,7 +9,7 @@ export const roomPostFetch = async (url: string, nick: string) => {
     }
     const res = await fetch(`http://localhost:8000/${url}`, options);
     const data = await res.json();
-    if (res.ok) return { "status": true, "data": data.roomsNumber };
+    if (res.ok) return { "status": true, "data": data.roomNumber };
     else return { "status": false, "data": data.message }
       ;
   } catch(e: any) {

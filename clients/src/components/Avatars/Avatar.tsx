@@ -5,7 +5,7 @@ import { useImageChange } from '../../custom/imageChange'
 interface AvatarProps {
   headContent?: string;
   nameContent?: string;
-  src?: string | File;
+  src?: string | File | Blob;
   alt?: string;
   size?: "sm" | "md" | "lr" | "full"
   shape?: "rounded" | "circle";
