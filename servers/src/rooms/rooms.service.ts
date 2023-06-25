@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { RoomsData } from './rooms.model'
+import { RoomsData, AuctionMemberData } from './rooms.model'
 
 @Injectable()
 export class RoomsService {
@@ -35,6 +35,7 @@ export class RoomsService {
         imageFile: '',
         admin: true,
       }],
+      auction: []
     });
     return roomNumber;
   }
@@ -61,6 +62,23 @@ export class RoomsService {
     const room = this.roomsData.find((room) => room.roomNumber === roomNumber);
     const result = room.members.find((member) => member.nick === nick).admin;
     return result;
+  }
+
+  async updateAuctionImg(roomNumber: string, nick: string, files: AuctionMemberData): Promise<boolean> {
+    const number = await this.getRoomNumber(roomNumber);
+    if (!number) throw new Error("Failed to not create room number");
+    const admin = await this.getMemberAdmin(roomNumber, nick);
+    if (!admin) throw new Error(`${nick} do not have permission`);
+    const pushData = this.roomsData.find((room) => room.roomNumber === roomNumber);
+    pushData.auction.push({
+      idx: files.idx,
+      nick: files.nick,
+      rating: files.rating,
+      point: files.point,
+      iamgeFile: files.iamgeFile,
+    })
+    console.log(this.roomsData.find((item) => item.roomNumber === roomNumber));
+    return true;
   }
 
   async removeRoomData(roomNumber: string): Promise<boolean> {

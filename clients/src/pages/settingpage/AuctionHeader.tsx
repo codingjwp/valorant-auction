@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuctionTitleSvg, AuctionSettingSvg } from '../../css/AuctionSetting.styles'
 import { AuctionBaseHeader} from '../../css/AuctionBase.styles'
 import { useRecoilValue } from 'recoil';
-import { roomNumberStates } from '../../states/roomState'
+import { roomStates } from '../../states/roomState'
 import { toast, Toaster } from 'react-hot-toast'
 import DropDown from "../../components/DropDowns/DropDown";
 import MediaModal from '../../components/Modals/MediaModal';
@@ -12,7 +12,7 @@ const AutcionHeader = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const roomNumber = useRecoilValue(roomNumberStates);
+  const roomData = useRecoilValue(roomStates);
   const menus = [
     {
       idx: "menu-01",
@@ -33,7 +33,8 @@ const AutcionHeader = () => {
 
   const handleChilpBoardCopy = async () => {
     try {
-      await navigator.clipboard.writeText(roomNumber);
+      if (!roomData) return ;
+      await navigator.clipboard.writeText(roomData.roomNumber);
       toast.success("클립보드에 복사를 성공하였습니다.", {
         duration: 2000,
         position: 'top-right',

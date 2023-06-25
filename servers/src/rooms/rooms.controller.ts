@@ -1,7 +1,9 @@
-import { Body, Controller, HttpStatus, Delete, Patch, Post, Query, Res, Req } from '@nestjs/common';
+import { Body, Controller, HttpStatus, Delete, Patch, Post, Query, Res, Req, UseInterceptors, UploadedFiles } from '@nestjs/common';
 import { RoomsService } from './rooms.service';
 import { BaseData } from './rooms.model';
 import { Response } from 'express';
+import { FilesInterceptor } from '@nestjs/platform-express';
+import * as multer from 'multer';
 
 
 @Controller('rooms')
@@ -15,6 +17,29 @@ export class RoomsController {
       res.status(HttpStatus.CREATED).json({ roomNumber: roomNumber });
     } catch (err: any) {
       res.status(HttpStatus.BAD_REQUEST).send({ message: err.message });
+    }
+  }
+
+  @Post('fileupload')
+  @UseInterceptors(FilesInterceptor('files.imgSrc', 25, { storage: multer.memoryStorage() }))
+  async filesUploadData(
+    @Body() base: BaseData, 
+    @Body('idx') idx: string, 
+    @Body('name') name: string,
+    @Body('rating') rating: string,
+    @UploadedFiles() files: Array<Express.Multer.File>, 
+    @Res() res: Response) {
+    try {
+      await this.roomsService.updateAuctionImg(base.roomNumber, base.nick, {
+        idx: idx,
+        nick: name,
+        rating: rating,
+        point: 0,
+        iamgeFile: files.map((item) => item.buffer),
+      })
+      res.status(HttpStatus.OK).send({message: true});
+    } catch (err: any) {
+      res.status(HttpStatus.BAD_REQUEST).send({ message: err.message});
     }
   }
 

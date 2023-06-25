@@ -1,13 +1,18 @@
 import { atom } from 'recoil';
 
-interface MemberProps {
+export interface MemberProps {
   idx: string,
   name: string,
   rating: string,
   imgSrc: Blob,
 }
 
-interface DirectorProps {
+export interface RoomDataProps {
+  roomNumber: string,
+  nick: string,
+}
+
+export interface DirectorProps {
   idx: string,
   name: string,
   point?: number,
@@ -15,9 +20,9 @@ interface DirectorProps {
   member?: MemberProps[]
 }
 
-export const roomNumberStates = atom<string>({
-  key: 'roomNumberState',
-  default: ""
+export const roomStates = atom<RoomDataProps | undefined>({
+  key: 'roomState',
+  default: undefined
 })
 
 export const directorStates = atom<DirectorProps[]>({

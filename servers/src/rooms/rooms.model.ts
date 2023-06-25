@@ -4,19 +4,22 @@ export interface BaseData {
   nick: string
 }
 
+
+export interface AuctionMemberData {
+  idx: string,
+  nick: string,
+  rating: string,
+  point: number,
+  iamgeFile: Buffer[],
+}
+
 export interface RoomsData {
-  roomNumber: string,
+  roomNumber: string;
   members: {
     nick: string,
     pointer: number,
     imageFile: string,
     admin: boolean
-  }[]
+  }[];
+  auction: AuctionMemberData[];
 };
-
-export interface AuctionMemberData {
-  nick: string,
-  group: string,
-  point: number,
-  iamgeFile: string,
-}

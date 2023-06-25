@@ -4,7 +4,7 @@ import { SelectBase, OptionBase, SelectStyleProps } from './Select.styles'
 
 interface SelectProps extends SelectStyleProps {
   seletId: string | null;
-  onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
   optionlist?: {
       idx: string,
       value: string,

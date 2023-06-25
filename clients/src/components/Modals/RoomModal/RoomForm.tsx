@@ -1,6 +1,6 @@
 import { ChangeEvent, useState, useRef, FormEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { roomNumberStates } from '../../../states/roomState';
+import { roomStates } from '../../../states/roomState';
 import { useRecoilState } from 'recoil'
 import { roomPatchFetch, roomPostFetch } from "../../../custom/roomPostFetch";
 import { socket } from "../../../App";
@@ -13,7 +13,7 @@ const RoomForm = ({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: React.Dispat
   const [isCheck, setIsCheck] = useState(true);
   const [roomValue, setRoomValue] = useState("");
   const [nickName, setNickName] = useState("");
-  const [_, setRooms] = useRecoilState(roomNumberStates);
+  const [_, setRooms] = useRecoilState(roomStates);
   const navigate = useNavigate();
 
    const handleFormSumbit = async (e: FormEvent<HTMLFormElement>) => {
@@ -27,7 +27,10 @@ const RoomForm = ({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: React.Dispat
           const res = await roomPostFetch('rooms', nickName);
           if (res.status === true) {
             setIsOpen(false);
-            setRooms(res.data);
+            setRooms({
+             roomNumber: res.data,
+             nick: nickName,
+            });
             socket.emit('createRooms', {
               roomNumber: res.data,
               nick: nickName,
@@ -40,7 +43,10 @@ const RoomForm = ({isOpen, setIsOpen}: {isOpen: boolean, setIsOpen: React.Dispat
           const res = await roomPatchFetch('rooms', roomValue, nickName);
           if (res.status === true) {
             setIsOpen(false);
-            setRooms(roomValue);
+            setRooms({
+              roomNumber: roomValue,
+              nick: nickName,
+             });
             socket.emit('joinRooms', {
               roomNumber: roomValue,
               nick: nickName,
