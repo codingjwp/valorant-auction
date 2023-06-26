@@ -37,6 +37,7 @@ export class RoomsController {
         point: 0,
         iamgeFile: files.map((item) => item.buffer),
       })
+      files.forEach((file) => file.buffer.fill(0));
       res.status(HttpStatus.OK).send({message: true});
     } catch (err: any) {
       res.status(HttpStatus.BAD_REQUEST).send({ message: err.message});

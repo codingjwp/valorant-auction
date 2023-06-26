@@ -13,13 +13,17 @@ export interface AuctionMemberData {
   iamgeFile: Buffer[],
 }
 
+export interface MemberDataProps {
+  idx: string,
+  nick: string,
+  point: number,
+  imageFile: Buffer[],
+  admin: boolean
+  auction: AuctionMemberData[];
+}
+
 export interface RoomsData {
   roomNumber: string;
-  members: {
-    nick: string,
-    pointer: number,
-    imageFile: string,
-    admin: boolean
-  }[];
+  members: MemberDataProps[];
   auction: AuctionMemberData[];
 };
