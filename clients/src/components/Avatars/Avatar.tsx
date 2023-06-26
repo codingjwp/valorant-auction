@@ -1,5 +1,5 @@
 import { SyntheticEvent } from "react";
-import { AvatarBaseContainer, AvatarBaseHead, AvatarBaseImg, AvatarBaseName } from "./Avatar.styles"
+import { AvatarBaseContainer, AvatarBaseHead, AvatarBaseImg, AvatarBaseName, AvatarNotImg } from "./Avatar.styles"
 import { useImageChange } from '../../custom/imageChange'
 
 interface AvatarProps {
@@ -7,6 +7,7 @@ interface AvatarProps {
   nameContent?: string;
   src?: string | File | Blob;
   alt?: string;
+  type?: string;
   size?: "sm" | "md" | "lr" | "full"
   shape?: "rounded" | "circle";
 }
@@ -40,11 +41,10 @@ const Avatar = (props: AvatarProps) => {
     <AvatarBaseContainer>
       {props.headContent ? <AvatarBaseHead>{props.headContent}</AvatarBaseHead> : null}
       {props.src 
-      ? <AvatarBaseImg width={imgSize[props.size || "sm"].width} height={imgSize[props.size || "sm"].height} shape={props.shape} src={imageFile} alt={props.alt} onError={handleImgSrcError} />
-      : <AvatarBaseImg width={imgSize[props.size || "sm"].width} height={imgSize[props.size || "sm"].height} shape={props.shape} src="/src/assets/svgs/baseavatar.svg" alt={`baseImg-${props.alt}`} />}
+      ? <AvatarBaseImg width={imgSize[props.size || "sm"].width} height={imgSize[props.size || "sm"].height} shape={props.shape} src={imageFile} alt={props.alt} type={props.type} onError={handleImgSrcError} />
+      : <AvatarNotImg size={props.size || "sm"} shape={props.shape} type={props.type} />}
       {props.nameContent ? <AvatarBaseName size={props.size} >{props.nameContent}</AvatarBaseName> : null}
     </AvatarBaseContainer>
   )
 }
-
 export default Avatar;

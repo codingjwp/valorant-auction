@@ -7,6 +7,8 @@ interface InputAttrsProps {
   type?: "number" | "text" | "email" | "password";
   alt?: string;
   name?: string;
+  min?: number;
+  max?: number;
   required?: boolean;
   placeholder?: string;
   maxLength?: number;

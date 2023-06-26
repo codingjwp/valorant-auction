@@ -58,7 +58,7 @@ const AuctionMiddle = () => {
         name="auction-finish"
         decor='variant-red'
         color="#f5f5f5"
-        disabled={member.length === 25 ? false : true}
+        // disabled={member.length === 25 ? false : true}
         onClick={handleFilePost}>완료</Button>
         <AuctionModal headerTitle="Auction Member Registration" modalOpen={isAuctionOpen} setModalOpen={setIsAuctionOpen} />
     </AuctionSettingSection>

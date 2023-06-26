@@ -6,7 +6,6 @@ interface ButtonAttrsProps {
   disabled?: boolean;
 }
 
-// width과 height size가 undefinde 일때
 export interface ButtonStyleProps extends ButtonAttrsProps {
   width?:  string;
   height?: string;

@@ -14,9 +14,9 @@ export interface RoomDataProps {
 
 export interface DirectorProps {
   idx: string,
-  name: string,
+  nick: string,
   point?: number,
-  imgSrc?: File,
+  imgSrc?: Blob,
   member?: MemberProps[]
 }
 
